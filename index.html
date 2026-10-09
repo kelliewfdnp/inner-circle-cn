@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>萃阁 The Inner Circle | Radical Wellness 高管健康续航系统</title>
+    
+    <!-- Google Fonts: Cormorant Garamond, Plus Jakarta Sans, Noto Serif SC, Noto Sans SC -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#C5A880',          /* Primary executive gold accent */
+                            goldHover: '#B3946C',     /* Rich gold hover shade */
+                            goldLight: '#EFE6D5',     /* Soft gold pill background */
+                            goldDarkText: '#1C170F',  /* Maximum contrast dark text for gold buttons/pills */
+                            sand: '#F7F5F0',          /* Signature warm background color */
+                            cardBg: '#FFFFFF',        /* Crisp white card background */
+                            border: '#E3DFD3',        /* Soft warm border */
+                            textDark: '#1C1F1D',      /* Deep charcoal main body text */
+                            textMuted: '#5B615C',     /* Medium neutral text for secondary labels */
+                            crimson: '#80142B',       /* Deep rich burgundy/crimson highlight */
+                            crimsonDark: '#F87171',   /* Luminous crimson accent in dark mode */
+                            darkBg: '#121413',       /* Dark mode main background */
+                            darkCard: '#1A1D1C',     /* Dark mode card container */
+                            darkBorder: '#2B2F2D'     /* Dark mode subtle border */
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'Noto Serif SC', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'Noto Sans SC', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+    body { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+    header.fixed { padding-top: env(safe-area-inset-top, 0px); }
+    html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+    .hero-title-gradient {
+      color: #80142B;
+    }
+    
+    .hero-accent-text {
+      color: #80142B;
+    }
+
+    .dark .hero-accent-text {
+      background: linear-gradient(135deg, #F9F2E4 0%, #E5CE9F 50%, #C5A880 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .glass-nav {
+        background-color: rgba(253, 253, 253, 0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+    .dark .glass-nav {
+        background-color: rgba(18, 20, 19, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+
+    /* Locked Down Zero-Flicker CSS Grid Stacking */
+    .grid-stack-container {
+        display: grid;
+        grid-template-areas: "stack";
+        align-items: start;
+    }
+
+    .story-panel {
+        grid-area: stack;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+    }
+
+    .story-panel.is-active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        position: relative;
+        z-index: 10;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #F7F5F0;
+    }
+    .dark ::-webkit-scrollbar-track {
+        background: #121413;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #C5A880;
+        border-radius: 4px;
+    }
+    </style>
+</head>
+<body class="bg-brand-sand dark:bg-brand-darkBg text-brand-textDark dark:text-neutral-100 font-sans antialiased selection:bg-brand-goldLight selection:text-brand-goldDarkText transition-colors duration-200">
+
+    <header class="fixed top-0 left-0 right-0 z-40 glass-nav border-b border-brand-border dark:border-brand-darkBorder transition-colors duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Brand Logo / Identity -->
+            <a href="#" onclick="scrollToSection('#', event)" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-full bg-brand-gold/15 dark:bg-brand-gold/20 border border-brand-gold/40 flex items-center justify-center font-serif text-lg font-bold text-brand-crimson dark:text-brand-gold transition-transform group-hover:scale-105">
+                    萃
+                </div>
+                <div>
+                    <div class="text-[10px] tracking-[0.25em] text-brand-gold font-bold uppercase">Radical Wellness</div>
+                    <div class="font-serif text-lg font-semibold text-brand-textDark dark:text-white tracking-wide">萃阁 <span class="text-xs font-sans text-brand-textMuted dark:text-neutral-400 font-normal ml-1">The Inner Circle</span></div>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden lg:flex items-center space-x-8 text-sm font-semibold tracking-wider text-brand-textMuted dark:text-neutral-300">
+                <a href="#ecosystem" onclick="scrollToSection('#ecosystem', event)" class="hover:text-brand-gold transition-colors uppercase">生态架构</a>
+                <a href="#stories" onclick="scrollToSection('#stories', event)" class="hover:text-brand-gold transition-colors uppercase">会员纪实</a>
+                <a href="#simulator" onclick="scrollToSection('#simulator', event)" class="hover:text-brand-gold transition-colors uppercase">临床分诊</a>
+                <a href="#access" onclick="scrollToSection('#access', event)" class="hover:text-brand-gold transition-colors uppercase">会员席位</a>
+                <a href="#value" onclick="scrollToSection('#value', event)" class="hover:text-brand-gold transition-colors uppercase">价值评估</a>
+            </nav>
+
+            <!-- Header Controls: Dark Mode Toggle & CTA -->
+            <div class="hidden sm:flex items-center space-x-4">
+                <!-- Theme Switcher Button -->
+                <button id="themeToggleBtn" type="button" onclick="toggleDarkMode()" aria-label="切换主题" class="p-2.5 rounded-full border border-brand-border dark:border-brand-darkBorder hover:border-brand-gold dark:hover:border-brand-gold text-brand-textMuted dark:text-neutral-300 transition-colors">
+                    <!-- Sun Icon (Light Mode) -->
+                    <svg id="sunIcon" class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <!-- Moon Icon (Dark Mode) -->
+                    <svg id="moonIcon" class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+
+                <!-- Action CTA -->
+                <button type="button" onclick="openModal()" class="bg-brand-gold hover:bg-brand-goldHover text-brand-goldDarkText font-medium text-xs tracking-wider px-5 py-2.5 rounded-full transition-all duration-200 shadow-sm hover:shadow">
+                    资格自测 check
+                </button>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button type="button" onclick="toggleMobileMenu()" class="lg:hidden p-2 text-brand-textDark dark:text-white" aria-label="打开菜单">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-brand-sand dark:bg-brand-darkCard border-b border-brand-border dark:border-brand-darkBorder px-6 py-6 space-y-4 transition-all">
+            <a href="#ecosystem" onclick="handleMobileNav(event, '#ecosystem')" class="block text-base font-medium text-brand-textDark dark:text-white">生态架构 ECOSYSTEM</a>
+            <a href="#stories" onclick="handleMobileNav(event, '#stories')" class="block text-base font-medium text-brand-textDark dark:text-white">会员纪实 STORIES</a>
+            <a href="#simulator" onclick="handleMobileNav(event, '#simulator')" class="block text-base font-medium text-brand-textDark dark:text-white">临床分诊 SIMULATOR</a>
+            <a href="#access" onclick="handleMobileNav(event, '#access')" class="block text-base font-medium text-brand-textDark dark:text-white">会员席位 ACCESS</a>
+            <a href="#value" onclick="handleMobileNav(event, '#value')" class="block text-base font-medium text-brand-textDark dark:text-white">价值评估 VALUE</a>
+            <div class="pt-4 border-t border-brand-border dark:border-brand-darkBorder flex items-center justify-between">
+                <button type="button" onclick="toggleDarkMode()" class="text-xs font-semibold text-brand-textMuted dark:text-neutral-300 flex items-center space-x-2">
+                    <span>切换模式 / Toggle Theme</span>
+                </button>
+                <button type="button" onclick="openModal(); toggleMobileMenu();" class="bg-brand-gold text-brand-goldDarkText font-medium text-xs px-4 py-2 rounded-full">
+                    开启自测
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Wrapper with offset padding for sticky header -->
+    <main class="pt-28">
+
+        <!-- SECTION A: HERO SECTION -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 text-center">
+            
+            <!-- Eyebrow Pill Badge -->
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-brand-goldLight dark:bg-neutral-800 border border-[#D8C9AE] dark:border-neutral-700 text-[#5C4825] dark:text-brand-gold text-xs font-semibold tracking-widest uppercase mb-8 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
+                <span>甄选席位受邀制 • 项目结业健康续航</span>
+            </div>
+
+            <!-- Main Serif Headline (Centered without punctuation) -->
+            <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-brand-textDark dark:text-white max-w-4xl mx-auto leading-[1.25]">
+                您已重塑健康基石<br>
+                如今更有一条<br>
+                <span class="hero-accent-text font-italic">终生专属守护线</span>
+            </h1>
+
+            <!-- Subheadline -->
+            <p class="mt-6 text-base sm:text-lg text-brand-textMuted dark:text-neutral-300 max-w-2xl mx-auto font-sans leading-relaxed">
+                “萃阁” (The Inner Circle) 是专为 Radical Wellness 结业高管设立的私密会员圈层。提供长期功能医学视角、精准临床数据解读与笃定的内心安宁。
+            </p>
+
+            <!-- Dual CTA Buttons -->
+            <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
+                <button type="button" onclick="openModal()" class="w-full sm:w-auto bg-brand-gold hover:bg-brand-goldHover text-brand-goldDarkText font-semibold text-sm tracking-wide px-8 py-4 rounded-full shadow-md hover:shadow-lg transition-all duration-200">
+                    开启资格自测 (Readiness Check)
+                </button>
+                <a href="#access" onclick="scrollToSection('#access', event)" class="w-full sm:w-auto bg-brand-cardBg dark:bg-brand-darkCard border border-brand-border dark:border-brand-darkBorder hover:border-brand-gold dark:hover:border-brand-gold text-brand-textDark dark:text-white font-medium text-sm tracking-wide px-8 py-4 rounded-full shadow-sm transition-all duration-200">
+                    探索会员席位层级 &rarr;
+                </a>
+            </div>
+
+            <!-- Subtle Trust Note -->
+            <div class="mt-12 text-xs text-brand-textMuted dark:text-neutral-400 tracking-wider">
+                仅面向 Radical Wellness 结业或在研高管及创始人开放
+            </div>
+        </section>
+
+        <!-- SECTION B: INTERACTIVE CARD GRID & DETAIL INSPECTOR BOX -->
+        <section id="ecosystem" class="scroll-mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-brand-border dark:border-brand-darkBorder">
+            
+            <div class="text-center mb-12">
+                <h2 class="text-xs font-bold tracking-[0.2em] text-brand-gold uppercase">全周期健康矩阵</h2>
+                <p class="font-serif text-3xl sm:text-4xl font-semibold text-brand-textDark dark:text-white mt-2">从澄和到衡序、曜升，再到萃阁终身续航</p>
+            </div>
+
+            <!-- Card Grid (Phases 01 - 03 + Inner Circle) with Bottom Pointer Arrows -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+                
+                <!-- Phase 01 Card -->
+                <div id="phaseCard01" onclick="selectPhase('01', event)" class="phase-card cursor-pointer bg-brand-cardBg dark:bg-brand-darkCard rounded-2xl p-6 border-2 border-brand-border dark:border-brand-darkBorder hover:border-brand-gold dark:hover:border-brand-gold transition-all duration-200 relative group">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-xs font-bold tracking-wider text-brand-gold uppercase">Phase 01</span>
+                        <div class="w-8 h-8 rounded-full border border-brand-crimson/30 dark:border-brand-gold/40 flex items-center justify-center text-brand-crimson dark:text-brand-gold group-hover:scale-110 transition-transform">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                        </div>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-brand-textDark dark:text-white">澄和</h3>
+                    <p class="text-xs text-brand-textMuted dark:text-neutral-400 mt-1">The Clarity Experience</p>
+                    <p class="text-xs text-brand-textMuted dark:text-neutral-300 mt-3 leading-relaxed">澄和臻境体验。身心澄澈、气韵平和，厘清身体混沌底座。</p>
+                    
+                    <!-- Dynamic Caret Indicator Arrow pointing to inspector box -->
+                    <div class="phase-arrow absolute -bottom-3.5 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-brand-gold z-20 transition-all"></div>
+                </div>
+
+                <!-- Phase 02 Card -->
+                <div id="phaseCard02" onclick="selectPhase('02', event)" class="phase-card cursor-pointer bg-brand-cardBg dark:bg-brand-darkCard rounded-2xl p-6 border-2 border-brand-border dark:border-brand-darkBorder hover:border-brand-gold dark:hover:border-brand-gold transition-all duration-200 relative group">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-xs font-bold tracking-wider text-brand-gold uppercase">Phase 02</span>
+                        <div class="w-8 h-8 rounded-full border border-brand-crimson/30 dark:border-brand-gold/40 flex items-center justify-center text-brand-crimson dark:text-brand-gold group-hover:scale-110 transition-transform">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 8h16M4 12h16M4 16h16"></path></svg>
+                        </div>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-brand-textDark dark:text-white">衡序</h3>
+                    <p class="text-xs text-brand-textMuted dark:text-neutral-400 mt-1">The Precision Alignment</p>
+                    <p class="text-xs text-brand-textMuted dark:text-neutral-300 mt-3 leading-relaxed">衡序精微匡和。校准能量与节律秩序，多维精准归位。</p>
+
+                    <!-- Dynamic Caret Indicator Arrow -->
+                    <div class="phase-arrow hidden absolute -bottom-3.5 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-brand-gold z-20 transition-all"></div>
+                </div>
+
+                <!-- Phase 03 Card -->
+                <div id="phaseCard03" onclick="selectPhase('03', event)" class="phase-card cursor-pointer bg-brand-cardBg dark:bg-brand-darkCard rounded-2xl p-6 border-2 border-brand-border dark:border-brand-darkBorder hover:border-brand-gold dark:hover:border-brand-gold transition-all duration-200 relative group">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-xs font-bold tracking-wider text-brand-gold uppercase">Phase 03</span>
+                        <div class="w-8 h-8 rounded-full border border-brand-crimson/30 dark:border-brand-gold/40 flex items-center justify-center text-brand-crimson dark:text-brand-gold group-hover:scale-110 transition-transform">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 11l7-7 7 7M5 19l7-7 7 7"></path></svg>
+                        </div>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-brand-textDark dark:text-white">曜升</h3>
+                    <p class="text-xs text-brand-textMuted dark:text-neutral-400 mt-1">The Ascension Path</p>
+                    <p class="text-xs text-brand-textMuted dark:text-neutral-300 mt-3 leading-relaxed">曜升生命进阶之道。微光升腾、层级进阶，生命质感跃迁。</p>
+
+                    <!-- Dynamic Caret Indicator Arrow -->
+                    <div class="phase-arrow hidden absolute -bottom-3.5 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-brand-gold z-20 transition-all"></div>
+                </div>
+
+                <!-- Continuity Card (Inner Circle) -->
+                <div id="phaseCardContinuity" onclick="selectPhase('Continuity', event)" class="phase-card cursor-pointer bg-brand-cardBg dark:bg-brand-darkCard rounded-2xl p-6 border-2 border-brand-border dark:border-brand-darkBorder hover:border-brand-gold transition-all duration-200 relative group">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-xs font-bold tracking-wider text-brand-crimson dark:text-brand-gold uppercase">PHASE CONTINUITY</span>
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-brand-goldLight dark:bg-neutral-800 text-[#5C4825] dark:text-brand-gold border border-[#D8C9AE] dark:border-neutral-700">永久</span>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-brand-textDark dark:text-white">萃阁续航</h3>
+                    <p class="text-xs text-brand-textMuted dark:text-neutral-400 mt-1">The Inner Circle</p>
+                    <p class="text-xs text-brand-textMuted dark:text-neutral-300 mt-3 leading-relaxed">萃阁专属会员圈层。精英荟萃私密雅域，极致长效陪伴。</p>
+
+                    <!-- Dynamic Caret Indicator Arrow -->
+                    <div class="phase-arrow hidden absolute -bottom-3.5 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-brand-gold z-20 transition-all"></div>
+                </div>
+
+            </div>
+
+            <!-- Dynamic Detail Inspector Box -->
+            <div class="mt-8 bg-brand-cardBg dark:bg-brand-darkCard border-2 border-brand-gold/60 dark:border-brand-gold/50 rounded-2xl p-6 sm:p-8 shadow-sm min-h-[260px] relative">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center pb-6 border-b border-brand-border dark:border-brand-darkBorder">
+                    <div>
+                        <div class="inline-flex items-center space-x-2 text-xs font-bold text-brand-gold tracking-widest uppercase">
+                            <span id="inspectorPhaseBadge">PHASE 01 DISCOVERY</span>
+                            <span>•</span>
+                            <span id="inspectorSubBadge">Initial Biological Audit</span>
+                        </div>
+                        <h3 id="inspectorTitle" class="font-serif text-2xl sm:text-3xl font-bold text-brand-textDark dark:text-white mt-1">澄和臻境体验 The Clarity Experience</h3>
+                    </div>
+                    <div class="mt-4 md:mt-0 text-left md:text-right">
+                        <span class="text-xs text-brand-textMuted dark:text-neutral-400 block">服务定位</span>
+                        <span id="inspectorTag" class="text-sm font-semibold text-brand-crimson dark:text-brand-gold">身心澄澈、气韵平和与底座审计</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
+                    <!-- Core Focus -->
+                    <div>
+                        <h4 class="text-xs font-bold tracking-wider text-brand-gold uppercase mb-3">核心聚焦 CORE FOCUS</h4>
+                        <p id="inspectorFocus" class="text-sm text-brand-textDark dark:text-neutral-200 leading-relaxed font-sans">
+                            清理身心内耗、厘清身体与意识的混沌状态，对从出生至今的健康发展时间线、功能医学实验室指标及环境压力源进行全面深入的排查。
+                        </p>
+                    </div>
+
+                    <!-- Key Outcomes -->
+                    <div>
+                        <h4 class="text-xs font-bold tracking-wider text-brand-gold uppercase mb-3">关键成果 KEY OUTCOMES</h4>
+                        <ul id="inspectorOutcomes" class="space-y-2 text-sm text-brand-textDark dark:text-neutral-200 font-sans">
+                            <!-- Injected via JS -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SECTION C: INTERACTIVE NARRATIVE / CASE STUDY TABS -->
+        <section id="stories" class="scroll-mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            
+            <div class="text-center mb-10">
+                <h2 class="text-xs font-bold tracking-[0.2em] text-brand-gold uppercase">真实会员续航纪实</h2>
+                <p class="font-serif text-3xl sm:text-4xl font-semibold text-brand-textDark dark:text-white mt-2">当突发状况出现，保留功能医学通道如何化解焦虑</p>
+            </div>
+
+            <!-- Story Navigation Tabs with Inline Pointer Caret -->
+            <div class="flex justify-center space-x-2 sm:space-x-4 mb-8 overflow-x-auto pb-2">
+                <button id="storyTab1" type="button" onclick="switchStory(1, event)" class="relative px-5 py-2.5 rounded-full text-sm font-bold tracking-wider transition-colors duration-150 bg-brand-gold text-brand-goldDarkText shadow">
+                    <span>案例 1: 科技高管倦怠与肠道应激</span>
+                    <div class="story-arrow absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-brand-gold z-10"></div>
+                </button>
+                <button id="storyTab2" type="button" onclick="switchStory(2, event)" class="relative px-5 py-2.5 rounded-full text-sm font-bold tracking-wider transition-colors duration-150 bg-brand-cardBg dark:bg-brand-darkCard text-brand-textMuted dark:text-neutral-300 border border-brand-border dark:border-brand-darkBorder hover:border-brand-gold">
+                    <span>案例 2: 创始人矿物质猝降与失眠</span>
+                    <div class="story-arrow hidden absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-brand-gold z-10"></div>
+                </button>
+                <button id="storyTab3" type="button" onclick="switchStory(3, event)" class="relative px-5 py-2.5 rounded-full text-sm font-bold tracking-wider transition-colors duration-150 bg-brand-cardBg dark:bg-brand-darkCard text-brand-textMuted dark:text-neutral-300 border border-brand-border dark:border-brand-darkBorder hover:border-brand-gold">
+                    <span>案例 3: 私募董事年度体检异常警报</span>
+                    <div class="story-arrow hidden absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-brand-gold z-10"></div>
+                </button>
+            </div>
+
+            <!-- Zero-Flicker Grid Overlay Container -->
+            <div class="grid-stack-container bg-brand-cardBg dark:bg-brand-darkCard border border-brand-border dark:border-brand-darkBorder rounded-2xl shadow-sm overflow-hidden min-h-[380px]">
+                
+                <!-- Story Panel 1 -->
+                <div id="storyPanel1" class="story-panel is-active p-6 sm:p-10">
+                    <div class="mb-6">
+                        <span class="text-[10px] font-bold tracking-widest text-brand-gold uppercase">科技公司高级副总裁 (42岁)</span>
+                        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-brand-textDark dark:text-white mt-1">年中高压倦怠与肠道炎性爆发</h3>
+                        <p class="text-xs text-brand-textMuted dark:text-neutral-400 mt-1 font-sans">异步分诊如何阻止长达3周的盲目就医循环</p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-brand-sand dark:bg-neutral-800 text-xs text-brand-textDark dark:text-neutral-200 mb-6 leading-relaxed">
+                        <strong>临床背景：</strong> 在完成“衡序”阶段后，重大产品发布期间的高压触发了急性胃肠道发炎与严重脑雾。
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="p-5 rounded-xl bg-red-50/50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/40">
+                            <span class="text-[10px] font-bold text-red-700 dark:text-red-400 uppercase tracking-wider">传统循环 (无萃阁保障)</span>
+                            <p class="text-xs text-brand-textDark dark:text-neutral-300 mt-2 leading-relaxed">恐慌性预约3位专科医生，产生 S$3,500+ 重复检查费用，盲目频繁更换补剂，并遭受数周的精力损伤。</p>
+                        </div>
+                        <div class="p-5 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/40">
+                            <span class="text-[10px] font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">萃阁专属守护路径</span>
+                            <p class="text-xs text-brand-textDark dark:text-neutral-300 mt-2 leading-relaxed">获得分诊回复：确认是皮质醇应激引发的肠道屏障一过性应激。仅需精简增加2种针对性营养素。</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-brand-border dark:border-brand-darkBorder text-center">
+                        <div>
+                            <span class="text-[10px] text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">恢复时间</span>
+                            <span class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">48 小时</span>
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">节省自费开支</span>
+                            <span class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">S$ 3,500+</span>
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">焦虑降低率</span>
+                            <span class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">100%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story Panel 2 -->
+                <div id="storyPanel2" class="story-panel p-6 sm:p-10">
+                    <div class="mb-6">
+                        <span class="text-[10px] font-bold tracking-widest text-brand-gold uppercase">创始人 & 投资人 (38岁)</span>
+                        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-brand-textDark dark:text-white mt-1">无法解释的失眠与矿物质崩溃</h3>
+                        <p class="text-xs text-brand-textMuted dark:text-neutral-400 mt-1 font-sans">在慢性失眠彻底定型前解读矿物质动态</p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-brand-sand dark:bg-neutral-800 text-xs text-brand-textDark dark:text-neutral-200 mb-6 leading-relaxed">
+                        <strong>临床背景：</strong> 会员在出差期间进行高强度训练后，突发凌晨 3 点惊醒及心悸现象。
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="p-5 rounded-xl bg-red-50/50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/40">
+                            <span class="text-[10px] font-bold text-red-700 dark:text-red-400 uppercase tracking-wider">传统循环 (无萃阁保障)</span>
+                            <p class="text-xs text-brand-textDark dark:text-neutral-300 mt-2 leading-relaxed">自行盲目购买各种助眠补剂、过量服用褪黑素，导致次日昏昏沉沉，加重疲劳。</p>
+                        </div>
+                        <div class="p-5 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/40">
+                            <span class="text-[10px] font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">萃阁专属守护路径</span>
+                            <p class="text-xs text-brand-textDark dark:text-neutral-300 mt-2 leading-relaxed">异步复核近期 HTMA 组织矿物质分析报告，发现钠/钾出现急剧消耗。Kel 快速调整了电解质剂量与服药时间。</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-brand-border dark:border-brand-darkBorder text-center">
+                        <div>
+                            <span class="text-[10px] text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">睡眠恢复</span>
+                            <span class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">2 天</span>
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">砍掉无用补剂</span>
+                            <span class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">4 种</span>
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">精力值打分</span>
+                            <span class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">9/10 恢复</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story Panel 3 -->
+                <div id="storyPanel3" class="story-panel p-6 sm:p-10">
+                    <div class="mb-6">
+                        <span class="text-[10px] font-bold tracking-widest text-brand-gold uppercase">私募股权董事 (46岁)</span>
+                        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-brand-textDark dark:text-white mt-1">年度体检报告的“红警”指标</h3>
+                        <p class="text-xs text-brand-textMuted dark:text-neutral-400 mt-1 font-sans">避免因误读常规血检报告而陷入虚惊</p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-brand-sand dark:bg-neutral-800 text-xs text-brand-textDark dark:text-neutral-200 mb-6 leading-relaxed">
+                        <strong>临床背景：</strong> 高管在年度例行体检中显示转氨酶与肌酐偏高，体检医生发出健康预警。
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="p-5 rounded-xl bg-red-50/50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/40">
+                            <span class="text-[10px] font-bold text-red-700 dark:text-red-400 uppercase tracking-wider">传统循环 (无萃阁保障)</span>
+                            <p class="text-xs text-brand-textDark dark:text-neutral-300 mt-2 leading-relaxed">陷入焦虑，预约昂贵的超声检查，并停掉已坚持一个月的健身计划。</p>
+                        </div>
+                        <div class="p-5 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/40">
+                            <span class="text-[10px] font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">萃阁专属守护路径</span>
+                            <p class="text-xs text-brand-textDark dark:text-neutral-300 mt-2 leading-relaxed">Kel 复核了原始数据，指出在抽血前 18 小时进行了高强度力量训练，导致肌酸激酶及转氨酶一过性升高。</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-brand-border dark:border-brand-darkBorder text-center">
+                        <div>
+                            <span class="text-[10px] text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">规避专家挂号</span>
+                            <span class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">2 次</span>
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">诊断开支节省</span>
+                            <span class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">S$ 2,500</span>
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">心态影响</span>
+                            <span class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">瞬时笃定</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- SECTION D: CHAT CONSOLE / TRIAGE SIMULATOR -->
+        <section id="simulator" class="scroll-mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-brand-border dark:border-brand-darkBorder">
+            
+            <div class="text-center mb-10">
+                <h2 class="text-xs font-bold tracking-[0.2em] text-brand-gold uppercase">临床实时分诊演练</h2>
+                <p class="font-serif text-3xl sm:text-4xl font-semibold text-brand-textDark dark:text-white mt-2">当身体发出不适信号时</p>
+                <p class="text-xs text-brand-textMuted dark:text-neutral-400 mt-2">点击下方不同场景，体验 Kel 如何进行结构化、理性安抚的临床分诊。</p>
+            </div>
+
+            <!-- Scenario Selection Buttons with Dynamic Pointer Arrow -->
+            <div class="flex flex-wrap justify-center gap-3 mb-8">
+                <button id="scenarioBtnA" type="button" onclick="loadScenario('A', event)" class="relative px-4 py-2 rounded-lg text-sm font-semibold border border-brand-gold bg-brand-goldLight dark:bg-neutral-800 text-brand-goldDarkText dark:text-brand-gold">
+                    <span>场景 A: 急性应激与脑雾</span>
+                    <div class="scenario-arrow absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[5px] border-t-brand-gold z-10"></div>
+                </button>
+                <button id="scenarioBtnB" type="button" onclick="loadScenario('B', event)" class="relative px-4 py-2 rounded-lg text-sm font-semibold border border-brand-border dark:border-brand-darkBorder text-brand-textMuted dark:text-neutral-300 hover:border-brand-gold">
+                    <span>场景 B: 化验单指标异常</span>
+                    <div class="scenario-arrow hidden absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[5px] border-t-brand-gold z-10"></div>
+                </button>
+                <button id="scenarioBtnC" type="button" onclick="loadScenario('C', event)" class="relative px-4 py-2 rounded-lg text-sm font-semibold border border-brand-border dark:border-brand-darkBorder text-brand-textMuted dark:text-neutral-300 hover:border-brand-gold">
+                    <span>场景 C: 长途跨国飞行前备战</span>
+                    <div class="scenario-arrow hidden absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[5px] border-t-brand-gold z-10"></div>
+                </button>
+            </div>
+
+            <!-- Mock Messaging Console -->
+            <div class="max-w-3xl mx-auto bg-brand-sand dark:bg-neutral-900 border border-brand-border dark:border-neutral-800 rounded-2xl p-4 sm:p-6 shadow-inner">
+                
+                <!-- Chat Window Header -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-brand-border dark:border-neutral-800 mb-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></div>
+                        <span id="chatChannelTitle" class="text-xs font-bold tracking-wider text-brand-textDark dark:text-white">萃阁会员私享通道 (Graduated Member Async Channel)</span>
+                    </div>
+                    <span class="text-[11px] font-medium text-brand-textMuted dark:text-neutral-400 bg-brand-goldLight/50 dark:bg-neutral-800 px-3 py-1 rounded-full border border-[#D8C9AE]/40 dark:border-neutral-700 self-start sm:self-auto">
+                        分诊窗口请参阅“常见问题”部分
+                    </span>
+                </div>
+
+                <!-- Chat Messages Stream -->
+                <div class="space-y-6">
+                    
+                    <!-- Incoming Member Message -->
+                    <div class="bg-brand-cardBg dark:bg-brand-darkCard p-4 rounded-2xl border border-brand-border dark:border-brand-darkBorder max-w-2xl">
+                        <div class="flex items-center justify-between mb-2">
+                            <span id="chatSenderName" class="text-xs font-bold text-brand-textDark dark:text-white">Marcus T. (萃阁会员)</span>
+                            <span id="chatSenderTime" class="text-[10px] text-brand-textMuted dark:text-neutral-400">10:42 AM SGT</span>
+                        </div>
+                        <p id="chatIncomingMessage" class="text-xs text-brand-textDark dark:text-neutral-200 leading-relaxed font-sans">
+                            “Kel，我今天早上醒来感觉严重的脑雾，昨晚晚宴后肠道胀痛发炎。我开始有些恐慌，担心之前的所有调理成果都毁于一旦了……”
+                        </p>
+                    </div>
+
+                    <!-- Practitioner Triaged Response -->
+                    <div class="bg-brand-cardBg dark:bg-brand-darkCard p-5 rounded-2xl border-2 border-brand-gold/40 max-w-2xl ml-auto">
+                        <div class="flex items-center justify-between mb-3 pb-2 border-b border-brand-border dark:border-brand-darkBorder">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-7 h-7 rounded-full bg-brand-gold flex items-center justify-center font-serif text-xs font-bold text-brand-goldDarkText">KL</div>
+                                <div>
+                                    <div class="text-xs font-bold text-brand-textDark dark:text-white">Kel Liew</div>
+                                    <div class="text-[10px] text-brand-textMuted dark:text-neutral-400">功能血检与营养基因组学 (Functional Health Practitioner)</div>
+                                </div>
+                            </div>
+                            <span class="text-[10px] font-bold text-brand-gold bg-brand-goldLight dark:bg-neutral-800 px-2 py-0.5 rounded">临床分诊指导</span>
+                        </div>
+
+                        <!-- Response Body (with min-height to reduce layout shift) -->
+                        <div id="chatPractitionerResponse" class="text-xs text-brand-textDark dark:text-neutral-200 space-y-3 font-sans min-h-[140px]">
+                            <p>Marcus 你好<br>首先请深呼吸。你过去的调理成果并没有毁掉。你现在经历的是暂时的组胺/炎症应激反应，而不是结构性的倒退。</p>
+                            <p class="font-bold text-brand-gold mt-2">今日 3 步行动指南：</p>
+                            <ol class="list-decimal pl-4 space-y-1">
+                                <li>暂停固态食物至下午 1:00；小口饮用温热电解质水。</li>
+                                <li>服用 2 粒活性炭/结合剂（需与日常药物间隔开）。</li>
+                                <li>晚间正常恢复服用镁剂。</li>
+                            </ol>
+                            <p class="mt-2">我们将在下午 4:00 SGT 窗口再次复核。保持定心，你的基础身体韧性依旧强健。</p>
+                        </div>
+
+                        <div class="mt-4 pt-3 border-t border-brand-border dark:border-brand-darkBorder flex justify-between items-center text-[10px] text-brand-textMuted dark:text-neutral-400">
+                            <span>萃阁保留分诊保障 (Retained Triage Continuity)</span>
+                            <span id="chatNextReview" class="font-medium text-brand-crimson dark:text-brand-gold">下次复核时间: 4:00 PM SGT</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- SECTION E: PRICING & ACCESS TIERS -->
+        <section id="access" class="scroll-mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            
+            <div class="text-center mb-12">
+                <h2 class="text-xs font-bold tracking-[0.2em] text-brand-gold uppercase">续航保障席位</h2>
+                <p class="font-serif text-3xl sm:text-4xl font-semibold text-brand-textDark dark:text-white mt-2">选择适合您的长期守护方案</p>
+                <p class="text-xs text-brand-textMuted dark:text-neutral-400 mt-2">专为项目结业后设计，严控席位容量以确保高规格医疗护理品质。</p>
+            </div>
+
+            <!-- 3-Tier Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                
+                <!-- Level 01: The Access (启晤) -->
+                <div id="pricingCardLevel01" onclick="selectPricingTier('Level01', event)" class="pricing-card cursor-pointer bg-brand-cardBg dark:bg-brand-darkCard rounded-2xl border-2 border-brand-border dark:border-brand-darkBorder p-8 flex flex-col justify-between hover:border-brand-gold transition-all duration-200">
+                    <div>
+                        <div class="text-xs font-bold tracking-widest text-brand-gold uppercase">LEVEL 01</div>
+                        <h3 class="font-serif text-2xl font-bold text-brand-textDark dark:text-white mt-1">启晤</h3>
+                        <p class="text-xs text-brand-textMuted dark:text-neutral-400">The Access｜启晤入门臻享</p>
+                        <p class="text-xs text-brand-textMuted dark:text-neutral-300 mt-4 leading-relaxed">
+                            开启新境，觉知初见。开启整套高阶健康体系的第一道契机，温和高级的圈层初阶礼遇。
+                        </p>
+                        <div class="mt-6 font-serif text-3xl font-bold text-brand-textDark dark:text-white">
+                            S$ 550 <span class="text-xs font-sans font-normal text-brand-textMuted">/ 年</span>
+                        </div>
+
+                        <ul class="mt-6 space-y-3 text-xs text-brand-textDark dark:text-neutral-200">
+                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 异步 WhatsApp 专属沟通通道</li>
+                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 结构化异步信息临床分诊</li>
+                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 实时功能医学指标解读与心理排忧</li>
+                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 访问 Radical Vault 知识宝库</li>
+                        </ul>
+                    </div>
+
+                    <button type="button" onclick="openModal()" class="mt-8 w-full bg-brand-sand dark:bg-neutral-800 hover:bg-brand-gold hover:text-brand-goldDarkText dark:hover:bg-brand-gold dark:hover:text-brand-goldDarkText text-brand-textDark dark:text-white font-medium text-xs py-3 rounded-full transition-colors duration-200">
+                        申请启晤席位
+                    </button>
+                </div>
+
+                <!-- Level 02: The Reserve (御藏 - FEATURED) -->
+                <div id="pricingCardLevel02" onclick="selectPricingTier('Level02', event)" class="pricing-card cursor-pointer bg-brand-cardBg dark:bg-brand-darkCard rounded-2xl border-[3px] border-brand-gold ring-2 ring-brand-gold/20 p-8 flex flex-col justify-between shadow-xl relative transform lg:-translate-y-2 transition-all duration-200">
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand-gold text-brand-goldDarkText text-[10px] font-bold tracking-widest px-4 py-1 rounded-full uppercase shadow">
+                        MOST SELECTED 最受欢迎
+                    </div>
+
+                    <div>
+                        <div class="text-xs font-bold tracking-widest text-brand-gold uppercase mt-2">LEVEL 02</div>
+                        <h3 class="font-serif text-2xl font-bold text-brand-textDark dark:text-white mt-1">御藏</h3>
+                        <p class="text-xs text-brand-textMuted dark:text-neutral-400">The Reserve｜御藏限定席位</p>
+                        <p class="text-xs text-brand-textMuted dark:text-neutral-300 mt-4 leading-relaxed">
+                            专属尊享，限量预留。享有专属预留资源、定期结构化化验单复盘与优先权益，低调奢华。
+                        </p>
+                        <div class="mt-6 font-serif text-3xl font-bold text-brand-textDark dark:text-white">
+                            S$ 1,450 <span class="text-xs font-sans font-normal text-brand-textMuted">/ 年</span>
+                        </div>
+
+                        <ul class="mt-6 space-y-3 text-xs text-brand-textDark dark:text-neutral-200">
+                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 包含 "启晤" 级别所有权益</li>
+                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 每年 4 次功能医学化验单二次深度解读</li>
+                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 每年 2 次 30 分钟 1:1 深度分析咨询</li>
+                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 优先补剂与生活方式动态调整方案</li>
+                        </ul>
+                    </div>
+
+                    <button type="button" onclick="openModal()" class="mt-8 w-full bg-brand-gold hover:bg-brand-goldHover text-brand-goldDarkText font-bold text-xs py-3.5 rounded-full shadow transition-colors duration-200">
+                        申请御藏席位
+                    </button>
+                </div>
+
+                <!-- Level 03: The Sanctuary (谧境) -->
+                <div id="pricingCardLevel03" onclick="selectPricingTier('Level03', event)" class="pricing-card cursor-pointer bg-brand-cardBg dark:bg-brand-darkCard rounded-2xl border-2 border-brand-border dark:border-brand-darkBorder p-8 flex flex-col justify-between hover:border-brand-gold transition-all duration-200">
+                    <div>
+                        <div class="text-xs font-bold tracking-widest text-brand-gold uppercase">LEVEL 03</div>
+                        <h3 class="font-serif text-2xl font-bold text-brand-textDark dark:text-white mt-1">谧境</h3>
+                        <p class="text-xs text-brand-textMuted dark:text-neutral-400">The Sanctuary｜谧境至尊栖愈之域</p>
+                        <p class="text-xs text-brand-textMuted dark:text-neutral-300 mt-4 leading-relaxed">
+                            万籁归静，无上净土。全方位的精品私管健康管家，为身心提供隔绝外扰的终极疗愈栖息地。
+                        </p>
+                        <div class="mt-6 font-serif text-3xl font-bold text-brand-textDark dark:text-white">
+                            S$ 2,800 <span class="text-xs font-sans font-normal text-brand-textMuted">/ 年</span>
+                        </div>
+
+                        <ul class="mt-6 space-y-3 text-xs text-brand-textDark dark:text-neutral-200">
+                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 包含 "御藏" 级别所有权益</li>
+                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 每年 6 次功能医学化验单二次深度解读</li>
+                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 每年 6 次 30 分钟按需战略咨询</li>
+                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 绿色通道极速响应优先通道</li>
+                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 直系亲属/家属健康模式交叉联动分析</li>
+                        </ul>
+                    </div>
+
+                    <button type="button" onclick="openModal()" class="mt-8 w-full bg-brand-sand dark:bg-neutral-800 hover:bg-brand-gold hover:text-brand-goldDarkText dark:hover:bg-brand-gold dark:hover:text-brand-goldDarkText text-brand-textDark dark:text-white font-medium text-xs py-3 rounded-full transition-colors duration-200">
+                        私密咨询申请
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- SECTION F: INTERACTIVE VALUE CALCULATOR -->
+        <section id="value" class="scroll-mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-brand-border dark:border-brand-darkBorder">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Narrative -->
+                <div class="lg:col-span-5">
+                    <h2 class="text-xs font-bold tracking-[0.2em] text-brand-gold uppercase">无形回报率</h2>
+                    <h3 class="font-serif text-3xl sm:text-4xl font-semibold text-brand-textDark dark:text-white mt-2">隐性价值计算方程式</h3>
+                    <p class="mt-4 text-xs text-brand-textMuted dark:text-neutral-300 leading-relaxed font-sans">
+                        对比传统医疗体系的碎片化、盲目就医与反复化验成本，评估保留式功能医学分诊为您带来的时间与经济回报。
+                    </p>
+
+                    <div class="mt-6 p-4 rounded-xl bg-brand-goldLight/40 dark:bg-neutral-800 border border-brand-border dark:border-neutral-700">
+                        <h4 class="text-xs font-bold text-brand-crimson dark:text-brand-gold uppercase">您所规避的传统困境：</h4>
+                        <p class="text-xs text-brand-textDark dark:text-neutral-300 mt-1 leading-relaxed">
+                            单次 S$500–S$1,200 的孤立名医挂号费、盲目盲从滥用补剂导致的健康倒退、恐慌性急诊挂号，以及宝贵商业精力的无谓消耗。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right Live Calculator Controls -->
+                <div class="lg:col-span-7 bg-brand-cardBg dark:bg-brand-darkCard border border-brand-border dark:border-brand-darkBorder rounded-2xl p-6 sm:p-8 shadow-sm">
+                    
+                    <h4 class="text-sm font-bold text-brand-textDark dark:text-white uppercase tracking-wider mb-6 pb-2 border-b border-brand-border dark:border-brand-darkBorder">
+                        交互式健康保障回报评估 (SGD)
+                    </h4>
+
+                    <!-- Slider 1: Uncertainty Moments per Year -->
+                    <div class="mb-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="text-xs font-semibold text-brand-textDark dark:text-white">年度健康焦虑时刻 (身体不适/报告疑问)</label>
+                            <span id="sliderValueMoments" class="text-sm font-bold text-brand-gold font-serif">6 次</span>
+                        </div>
+                        <input type="range" id="inputMoments" min="2" max="20" value="6" oninput="calculateValue()" class="w-full accent-brand-gold bg-brand-sand dark:bg-neutral-800 rounded-lg h-2 cursor-pointer">
+                    </div>
+
+                    <!-- Slider 2: Avoided Emergency Visits -->
+                    <div class="mb-8">
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="text-xs font-semibold text-brand-textDark dark:text-white">成功规避的恐慌性门诊/急诊/专家号</label>
+                            <span id="sliderValueVisits" class="text-sm font-bold text-brand-gold font-serif">2 次</span>
+                        </div>
+                        <input type="range" id="inputVisits" min="0" max="8" value="2" oninput="calculateValue()" class="w-full accent-brand-gold bg-brand-sand dark:bg-neutral-800 rounded-lg h-2 cursor-pointer">
+                    </div>
+
+                    <!-- Result Summary Callouts -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-brand-border dark:border-brand-darkBorder">
+                        <div class="bg-brand-sand dark:bg-neutral-900 p-4 rounded-xl text-center">
+                            <span class="text-[10px] text-brand-textMuted dark:text-neutral-400 uppercase font-bold tracking-wider">预估节省自费医疗开支</span>
+                            <div id="resultSavings" class="font-serif text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1">S$ 2,800+</div>
+                        </div>
+                        <div class="bg-brand-sand dark:bg-neutral-900 p-4 rounded-xl text-center">
+                            <span class="text-[10px] text-brand-textMuted dark:text-neutral-400 uppercase font-bold tracking-wider">节省候诊与跑院时间</span>
+                            <div id="resultHours" class="font-serif text-2xl font-bold text-brand-textDark dark:text-white mt-1">17 小时</div>
+                        </div>
+                    </div>
+
+                    <p class="text-center text-[11px] text-brand-textMuted dark:text-neutral-400 italic mt-6">
+                        “几小时内获得笃定明确的解法，而非在数天的焦虑中内耗。您已重塑健康——萃阁为您保驾护航。”
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- SECTION G: ACCORDION FAQ SECTION -->
+        <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            
+            <div class="text-center mb-10">
+                <h2 class="text-xs font-bold tracking-[0.2em] text-brand-gold uppercase">清晰透明</h2>
+                <p class="font-serif text-3xl sm:text-4xl font-semibold text-brand-textDark dark:text-white mt-2">常见疑问解答</p>
+            </div>
+
+            <div class="space-y-4">
+                
+                <!-- FAQ Item 1 -->
+                <div class="bg-brand-cardBg dark:bg-brand-darkCard border border-brand-border dark:border-brand-darkBorder rounded-xl overflow-hidden">
+                    <button type="button" onclick="toggleFaq(1, event)" class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-semibold text-xs sm:text-sm text-brand-textDark dark:text-white">异步分诊通道是如何具体工作的？</span>
+                        <span id="faqIcon1" class="text-brand-gold font-bold text-lg">+</span>
+                    </button>
+                    <div id="faqAnswer1" class="hidden px-6 pb-4 text-xs text-brand-textMuted dark:text-neutral-300 leading-relaxed font-sans border-t border-brand-border/50 dark:border-brand-darkBorder/50 pt-3">
+                        会员随时可以通过私享 WhatsApp 专属通道提交健康疑问或调理反馈。Kel 会在每个工作日（周一至周五 11:00 AM 与 4:00 PM SGT，新加坡法定节假日除外）的专属集中分诊窗口统一进行深入复核与结构化回复，确保为您提供高质量、深思熟虑的临床与健康调理指导，避免碎片化干扰。
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-brand-cardBg dark:bg-brand-darkCard border border-brand-border dark:border-brand-darkBorder rounded-xl overflow-hidden">
+                    <button type="button" onclick="toggleFaq(2, event)" class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-semibold text-xs sm:text-sm text-brand-textDark dark:text-white">“萃阁”能否替代我的全科医生或公立医院急诊？</span>
+                        <span id="faqIcon2" class="text-brand-gold font-bold text-lg">+</span>
+                    </button>
+                    <div id="faqAnswer2" class="hidden px-6 pb-4 text-xs text-brand-textMuted dark:text-neutral-300 leading-relaxed font-sans border-t border-brand-border/50 dark:border-brand-darkBorder/50 pt-3">
+                        不能。“萃阁”提供的是功能医学健康解读、调理方案微调以及预防性健康续航。它不替代正规医院的疾病诊断、处方开具或急性急诊救治 (A&E)。
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-brand-cardBg dark:bg-brand-darkCard border border-brand-border dark:border-brand-darkBorder rounded-xl overflow-hidden">
+                    <button type="button" onclick="toggleFaq(3, event)" class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-semibold text-xs sm:text-sm text-brand-textDark dark:text-white">谁有资格申请加入“萃阁”？</span>
+                        <span id="faqIcon3" class="text-brand-gold font-bold text-lg">+</span>
+                    </button>
+                    <div id="faqAnswer3" class="hidden px-6 pb-4 text-xs text-brand-textMuted dark:text-neutral-300 leading-relaxed font-sans border-t border-brand-border/50 dark:border-brand-darkBorder/50 pt-3">
+                        萃阁严格采取席位受邀制，仅面向已经完成或正在积极参与 Radical Wellness 核心项目（如“澄和臻境体验”或“衡序精微匡和”）的客户开放。
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-brand-cardBg dark:bg-brand-darkCard border border-brand-border dark:border-brand-darkBorder rounded-xl overflow-hidden">
+                    <button type="button" onclick="toggleFaq(4, event)" class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-semibold text-xs sm:text-sm text-brand-textDark dark:text-white">如果我需要正式的化验单二次解读，该如何安排？</span>
+                        <span id="faqIcon4" class="text-brand-gold font-bold text-lg">+</span>
+                    </button>
+                    <div id="faqAnswer4" class="hidden px-6 pb-4 text-xs text-brand-textMuted dark:text-neutral-300 leading-relaxed font-sans border-t border-brand-border/50 dark:border-brand-darkBorder/50 pt-3">
+                        Level 02 (御藏限定席位) 每年包含 4 次功能医学化验单深度二次解读及 2 次 1:1 深入咨询；Level 03 (谧境至尊栖愈之域) 则提供 6 次解读及 1:1 按需战略沟通。
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- SECTION H: COMPREHENSIVE FOOTER -->
+    <footer class="bg-brand-sand dark:bg-brand-darkBg border-t border-brand-border dark:border-brand-darkBorder py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center pb-8 border-b border-brand-border dark:border-brand-darkBorder">
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <div class="font-serif text-xl font-bold text-brand-textDark dark:text-white">萃阁 <span class="text-xs font-sans text-brand-gold">The Inner Circle</span></div>
+                    <p class="text-xs text-brand-textMuted dark:text-neutral-400 mt-1">Radical Wellness 旗下极致高管健康续航私享会</p>
+                </div>
+
+                <div class="flex space-x-6 text-xs text-brand-textMuted dark:text-neutral-300">
+                    <a href="#ecosystem" onclick="scrollToSection('#ecosystem', event)" class="hover:text-brand-gold">生态架构</a>
+                    <a href="#stories" onclick="scrollToSection('#stories', event)" class="hover:text-brand-gold">会员纪实</a>
+                    <a href="#simulator" onclick="scrollToSection('#simulator', event)" class="hover:text-brand-gold">临床分诊</a>
+                    <a href="#access" onclick="scrollToSection('#access', event)" class="hover:text-brand-gold">席位选择</a>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-[11px] text-brand-textMuted dark:text-neutral-400 space-y-4 md:space-y-0">
+                <div>
+                    &copy; 2026 Radical Wellness & The Inner Circle. All rights reserved.
+                </div>
+                <div class="max-w-xl text-center md:text-right leading-relaxed">
+                    本网站仅面向受邀会员及结业高管提供功能医学资讯与异步分诊。
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SECTION I: ACCESSIBLE AUDIT / READINESS MODAL -->
+    <div id="readinessModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity">
+        <div class="bg-white dark:bg-brand-darkCard border border-stone-200 dark:border-brand-darkBorder rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative">
+            
+            <!-- Close Modal Button -->
+            <button type="button" onclick="closeModal()" class="absolute top-5 right-5 text-neutral-400 hover:text-neutral-700 dark:hover:text-white p-1 text-lg font-bold leading-none">
+                &#215;
+            </button>
+
+            <!-- Modal Header -->
+            <div class="text-left mb-6">
+                <span class="text-[11px] font-bold tracking-[0.15em] text-[#C5A880] uppercase">甄选席位 • 受邀制</span>
+                <h3 class="font-serif text-2xl sm:text-3xl font-semibold text-neutral-900 dark:text-white mt-1">资格与匹配度自测</h3>
+                <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-1 font-sans">评估萃阁 (The Inner Circle) 是否符合您当前的健康调理阶段。</p>
+            </div>
+
+            <!-- Modal Form -->
+            <form id="modalForm" onsubmit="handleModalSubmit(event)" class="space-y-4 text-left">
+                
+                <!-- Q1: Program Status -->
+                <div>
+                    <label class="block text-xs font-bold text-neutral-800 dark:text-neutral-200 mb-1.5">1. 您是否已完成 Radical Wellness 旗下健康项目？</label>
+                    <select id="modalStatus" required class="w-full bg-[#F5F3EF] dark:bg-neutral-800 border border-stone-200 dark:border-neutral-700 rounded-xl p-3 text-xs text-neutral-800 dark:text-white focus:outline-none focus:border-[#C5A880] appearance-none cursor-pointer pr-8 bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E')] bg-[length:9px_9px] bg-[right_1rem_center] bg-no-repeat">
+                        <option value="是（已结业澄和 / 衡序 / 曜升阶段）">是（已结业澄和 / 衡序 / 曜升阶段）</option>
+                        <option value="正在积极参与 Radical Wellness 核心调理项目">正在积极参与 Radical Wellness 核心调理项目</option>
+                        <option value="否，我是新客户，希望了解基础健康方案">否，我是新客户，希望了解基础健康方案</option>
+                    </select>
+                </div>
+
+                <!-- Q2: Value Preference -->
+                <div>
+                    <label class="block text-xs font-bold text-neutral-800 dark:text-neutral-200 mb-1.5">2. 在当前阶段，您最看重哪项权益？</label>
+                    <select id="modalPreference" required class="w-full bg-[#F5F3EF] dark:bg-neutral-800 border border-stone-200 dark:border-neutral-700 rounded-xl p-3 text-xs text-neutral-800 dark:text-white focus:outline-none focus:border-[#C5A880] appearance-none cursor-pointer pr-8 bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E')] bg-[length:9px_9px] bg-[right_1rem_center] bg-no-repeat">
+                        <option value="随时安心沟通，在身体出现异常信号时获得即时分诊">随时安心沟通，在身体出现异常信号时获得即时分诊</option>
+                        <option value="Level 02 御藏席位 — 定期化验单复盘与年度 1:1 深度咨询">Level 02 御藏席位 — 定期化验单复盘与年度 1:1 深度咨询</option>
+                        <option value="Level 03 谧境席位 — 全方位私人健康管家与优先响应">Level 03 谧境席位 — 全方位私人健康管家与优先响应</option>
+                    </select>
+                </div>
+
+                <!-- Q3: Stacked Inputs for Name and Email -->
+                <div>
+                    <label class="block text-xs font-bold text-neutral-800 dark:text-neutral-200 mb-1.5">3. 请输入您的姓名与电子邮箱（用于申请审核）</label>
+                    <div class="space-y-2">
+                        <input type="text" id="modalName" required placeholder="尊姓名 Full Name" class="w-full bg-[#F5F3EF] dark:bg-neutral-800 border border-stone-200 dark:border-neutral-700 rounded-xl p-3 text-xs text-neutral-800 dark:text-white placeholder-neutral-400 focus:outline-none focus:border-[#C5A880]">
+                        <input type="email" id="modalEmail" required placeholder="电子邮箱 Email Address" class="w-full bg-[#F5F3EF] dark:bg-neutral-800 border border-stone-200 dark:border-neutral-700 rounded-xl p-3 text-xs text-neutral-800 dark:text-white placeholder-neutral-400 focus:outline-none focus:border-[#C5A880]">
+                    </div>
+                </div>
+
+                <!-- Action Buttons Stack -->
+                <div class="pt-2 space-y-2.5">
+                    <button type="submit" onclick="setSubmitType('whatsapp')" class="w-full bg-[#05A35C] hover:bg-[#04884c] text-white font-bold text-xs uppercase tracking-wider py-3.5 px-4 rounded-xl shadow-sm transition-all duration-200 flex items-center justify-center space-x-2">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                        <span>通过 WhatsApp 提交申请</span>
+                    </button>
+
+                    <button type="submit" onclick="setSubmitType('webform')" class="w-full bg-[#C5A880] hover:bg-[#B3946C] text-[#1C170F] font-bold text-xs uppercase tracking-wider py-3.5 px-4 rounded-xl shadow-sm transition-all duration-200">
+                        或通过网页表单提交
+                    </button>
+                </div>
+
+            </form>
+
+            <!-- Success Feedback Screen -->
+            <div id="modalSuccess" class="hidden text-center py-8">
+                <div class="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto mb-4 text-xl">
+                    &#10003;
+                </div>
+                <h4 class="font-serif text-2xl font-bold text-neutral-900 dark:text-white">申请已收到</h4>
+                <p id="successDescription" class="text-xs text-neutral-600 dark:text-neutral-300 mt-2 leading-relaxed">
+                    感谢您的提交。我们已收到您的申请，将尽快进行评估并与您联系。
+                </p>
+                
+                <div class="mt-6 flex flex-col sm:flex-row justify-center gap-3">
+                    <a id="directWaBtn" href="https://wa.me/6596449966" target="_blank" class="bg-[#05A35C] text-white text-xs font-bold px-6 py-2.5 rounded-xl inline-block">
+                        直接发起 WhatsApp 沟通 (+65 96449966)
+                    </a>
+                    <button type="button" onclick="closeModal()" class="bg-stone-200 dark:bg-neutral-800 text-neutral-800 dark:text-white text-xs font-medium px-5 py-2.5 rounded-xl">
+                        关闭
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        /* ----------------------------------------------------
+           1. Navigation & Theme Functions
+        ---------------------------------------------------- */
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            if (menu) {
+                menu.classList.toggle('hidden');
+            }
+        }
+
+        function handleMobileNav(event, selector) {
+            if (event && event.preventDefault) event.preventDefault();
+            const menu = document.getElementById('mobileMenu');
+            if (menu) menu.classList.add('hidden');
+            scrollToSection(selector, null);
+        }
+
+        function scrollToSection(href, event) {
+            if (event && event.preventDefault) event.preventDefault();
+            if (!href || href === '#') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+            const target = document.querySelector(href);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        /* ----------------------------------------------------
+           2. Phase Inspector Interactive Card Logic (With Dynamic Carets)
+        ---------------------------------------------------- */
+        const phaseData = {
+            '01': {
+                phaseBadge: 'PHASE 01 DISCOVERY',
+                subBadge: 'Initial Biological Audit',
+                title: '澄和臻境体验 The Clarity Experience',
+                tag: '身心澄澈、气韵平和与底座审计',
+                focus: '取自“身心澄澈、气韵平和”之意，清理身心内耗、厘清身体与意识的混沌状态。对从出生至今的健康发展时间线与功能医学指标进行深度排查。',
+                outcomes: [
+                    '完整的出生至今功能生物学时间线审计',
+                    '身心内耗根源评估与个性化化验路线图',
+                    '初始肠道屏障与代谢稳定调理方案'
+                ]
+            },
+            '02': {
+                phaseBadge: 'PHASE 02 OPTIMIZATION',
+                subBadge: 'Systemic Fine-Tuning',
+                title: '衡序精微匡和 The Precision Alignment',
+                tag: '校准能量与节律秩序，多维精准归位',
+                focus: '“衡”为精准校准身心能量，“序”为重塑身心节律秩序。匡正身心失衡、调和周身气韵，修复紊乱的身体、情绪与能量状态。',
+                outcomes: [
+                    '矿物质平衡与电解质精微匡和',
+                    '肠道微生态与肠粘膜屏障修复优化',
+                    '激素与肾上腺皮质醇节律秩序重置'
+                ]
+            },
+            '03': {
+                phaseBadge: 'PHASE 03 MASTERY',
+                subBadge: 'Long-term Longevity',
+                title: '曜升生命进阶之道 The Ascension Path',
+                tag: '微光升腾、层级进阶，生命质感跃迁',
+                focus: '“曜”为微光升腾、光华内敛，“升”为层级进阶、生命扬升。循序渐进的生命质感跃迁、体能进阶、意识升维，专属高阶养护之路。',
+                outcomes: [
+                    '自主健康指标追踪与意识升维感知',
+                    '进阶细胞级延缓衰老与长寿养护',
+                    '动态适应商旅出行与高压生活方式'
+                ]
+            },
+            'Continuity': {
+                phaseBadge: 'PHASE CONTINUITY',
+                subBadge: 'Retained Access & Peace of Mind',
+                title: '萃阁专属会员圈层 The Inner Circle',
+                tag: '精英荟萃私密雅域，极致长效陪伴',
+                focus: '“萃”为精英荟萃，“阁”为私密雅域。结业后长期深耕的私密会员社群与私教式健康陪伴，提供专属消息分诊与定心丸。',
+                outcomes: [
+                    '专属异步消息复核与分诊窗口（周一至周五 11:00 AM & 4:00 PM SGT，新加坡公休假除外）',
+                    '有效避免盲目 Google 搜索带来的恐慌与无谓跑院',
+                    '长期生物标志物趋势连续追踪'
+                ]
+            }
+        };
+
+        function selectPhase(phaseKey, event) {
+            if (event && event.preventDefault) event.preventDefault();
+
+            document.querySelectorAll('.phase-card').forEach(card => {
+                card.classList.remove('border-brand-gold', 'dark:border-brand-gold', 'ring-2', 'ring-brand-gold/20', 'shadow-lg');
+                card.classList.add('border-2', 'border-brand-border', 'dark:border-brand-darkBorder');
+                
+                const arrow = card.querySelector('.phase-arrow');
+                if (arrow) arrow.classList.add('hidden');
+            });
+
+            const selectedCard = document.getElementById(
+                phaseKey === 'Continuity' ? 'phaseCardContinuity' : `phaseCard${phaseKey}`
+            );
+            if (selectedCard) {
+                selectedCard.classList.remove('border-brand-border', 'dark:border-brand-darkBorder');
+                selectedCard.classList.add('border-2', 'border-brand-gold', 'dark:border-brand-gold', 'ring-2', 'ring-brand-gold/20', 'shadow-lg');
+                
+                const arrow = selectedCard.querySelector('.phase-arrow');
+                if (arrow) arrow.classList.remove('hidden');
+            }
+
+            const data = phaseData[phaseKey];
+            if (!data) return;
+            document.getElementById('inspectorPhaseBadge').innerText = data.phaseBadge;
+            document.getElementById('inspectorSubBadge').innerText = data.subBadge;
+            document.getElementById('inspectorTitle').innerText = data.title;
+            document.getElementById('inspectorTag').innerText = data.tag;
+            document.getElementById('inspectorFocus').innerText = data.focus;
+
+            const outcomesList = document.getElementById('inspectorOutcomes');
+            outcomesList.innerHTML = data.outcomes.map(item => `
+                <li class="flex items-start">
+                    <span class="text-brand-gold mr-2 font-bold">•</span>
+                    <span>${item}</span>
+                </li>
+            `).join('');
+        }
+
+        function selectPricingTier(tierKey, event) {
+            if (event && event.preventDefault) event.preventDefault();
+
+            document.querySelectorAll('.pricing-card').forEach(card => {
+                card.classList.remove('border-[3px]', 'border-brand-gold', 'ring-2', 'ring-brand-gold/20', 'shadow-xl');
+                card.classList.add('border-2', 'border-brand-border', 'dark:border-brand-darkBorder');
+            });
+
+            const selectedTier = document.getElementById(`pricingCard${tierKey}`);
+            if (selectedTier) {
+                selectedTier.classList.remove('border-2', 'border-brand-border', 'dark:border-brand-darkBorder');
+                selectedTier.classList.add('border-[3px]', 'border-brand-gold', 'ring-2', 'ring-brand-gold/20', 'shadow-xl');
+            }
+        }
+
+        /* ----------------------------------------------------
+           3. Member Story Case Study Switcher (With Dynamic Pointer)
+        ---------------------------------------------------- */
+        function switchStory(id, event) {
+            if (event && event.preventDefault) event.preventDefault();
+            for (let i = 1; i <= 3; i++) {
+                const tab = document.getElementById(`storyTab${i}`);
+                const panel = document.getElementById(`storyPanel${i}`);
+                const arrow = tab ? tab.querySelector('.story-arrow') : null;
+                if (i === id) {
+                    if (tab) tab.className = "relative px-5 py-2.5 rounded-full text-sm font-bold tracking-wider transition-colors duration-150 bg-brand-gold text-brand-goldDarkText shadow";
+                    if (panel) panel.classList.add('is-active');
+                    if (arrow) arrow.classList.remove('hidden');
+                } else {
+                    if (tab) tab.className = "relative px-5 py-2.5 rounded-full text-sm font-bold tracking-wider transition-colors duration-150 bg-brand-cardBg dark:bg-brand-darkCard text-brand-textMuted dark:text-neutral-300 border border-brand-border dark:border-brand-darkBorder hover:border-brand-gold";
+                    if (panel) panel.classList.remove('is-active');
+                    if (arrow) arrow.classList.add('hidden');
+                }
+            }
+        }
+
+        /* ----------------------------------------------------
+           4. Clinical Triage Simulator Logic (With Dynamic Pointer)
+        ---------------------------------------------------- */
+        const scenarioData = {
+            'A': {
+                sender: 'Marcus T. (萃阁会员)',
+                time: '10:42 AM SGT',
+                nextReview: '下次复核时间: 4:00 PM SGT',
+                incoming: '“Kel，我今天早上醒来感觉严重的脑雾，昨晚晚宴后肠道胀痛发炎。我开始有些恐慌，担心之前的所有调理成果都毁于一旦了……”',
+                practitionerSteps: `
+                    <p>Marcus 你好<br>首先请深呼吸。你过去的调理成果并没有毁掉。你现在经历的是暂时的组胺/炎症应激反应，而不是结构性的倒退。</p>
+                    <p class="font-bold text-brand-gold mt-2">今日 3 步行动指南：</p>
+                    <ol class="list-decimal pl-4 space-y-1">
+                        <li>暂停固态食物至下午 1:00；小口饮用温热电解质水。</li>
+                        <li>服用 2 粒活性炭/结合剂（需与日常药物间隔开）。</li>
+                        <li>晚间正常恢复服用镁剂。</li>
+                    </ol>
+                    <p class="mt-2">我们将在下午 4:00 SGT 窗口再次复核。保持定心，你的基础身体韧性依旧强健。</p>
+                `
+            },
+            'B': {
+                sender: 'Elena R. (御藏会员)',
+                time: '09:15 AM SGT',
+                nextReview: '下次复核时间: 11:00 AM SGT',
+                incoming: '“Kel，我医生刚刚把体检报告发给我，警告我的 LDL 和 CRP 偏高，建议立刻开始吃药。我需要担心吗？”',
+                practitionerSteps: `
+                    <p>Elena 你好<br>我已经仔细查看了化验单。注意到你的 hs-CRP 升高是孤立现象，而你的甘油三酯/HDL 比值为 1.2（非常理想）。</p>
+                    <p class="mt-2">因为你 10 天前刚经历过病毒感染，急性期蛋白会出现暂时性升高。这是身体正常的生理反应，而非慢性心血管衰退。</p>
+                    <p class="mt-2"><strong class="text-brand-gold">建议：</strong>向医生说明情况，申请在免疫清除完成 6 周后重新复查即可。无需恐慌。</p>
+                    <p class="mt-2">我们将于下一个分诊窗口（11:00 AM SGT）继续跟进你的复查跟进表。</p>
+                `
+            },
+            'C': {
+                sender: 'David K. (谧境会员)',
+                time: '08:30 AM SGT',
+                nextReview: '下次复核时间: 4:00 PM SGT',
+                incoming: '“今晚从新加坡飞纽约（18小时长途飞行）。感觉有些疲惫，很担心时差会毁了我周四的董事会报告。”',
+                practitionerSteps: `
+                    <p>早上好 David<br>让我们锁定你的长途飞行防护方案。</p>
+                    <p class="font-bold text-brand-gold mt-2">飞行日方案 (Flight Day Protocol)：</p>
+                    <ul class="list-disc pl-4 space-y-1">
+                        <li><strong>补水：</strong>机舱内每 3 小时饮用 500ml 含有电解质的水。</li>
+                        <li><strong>轻断食：</strong>避开高碳水机舱正餐，选择轻蛋白/优质脂肪。</li>
+                        <li><strong>睡眠同步：</strong>抵达 JFK 当地时间晚 10 PM 准备入睡时服用 3mg 褪黑素。</li>
+                        <li><strong>晨光照射：</strong>抵达次日早晨接受 20 分钟户外阳光照射。</li>
+                    </ul>
+                    <p class="mt-2">我们将于下午 4:00 SGT 再次确认你的登机准备动态。祝你飞行顺利！</p>
+                `
+            }
+        };
+
+        function loadScenario(key, event) {
+            if (event && typeof event.preventDefault === 'function') {
+                event.preventDefault();
+            }
+
+            const btns = ['A', 'B', 'C'];
+            btns.forEach(b => {
+                const btn = document.getElementById(`scenarioBtn${b}`);
+                const arrow = btn ? btn.querySelector('.scenario-arrow') : null;
+                if (b === key) {
+                    btn.className = "relative px-4 py-2 rounded-lg text-sm font-semibold border border-brand-gold bg-brand-goldLight dark:bg-neutral-800 text-brand-goldDarkText dark:text-brand-gold transition-colors duration-150";
+                    if (arrow) arrow.classList.remove('hidden');
+                } else {
+                    btn.className = "relative px-4 py-2 rounded-lg text-sm font-semibold border border-brand-border dark:border-brand-darkBorder text-brand-textMuted dark:text-neutral-300 hover:border-brand-gold transition-colors duration-150";
+                    if (arrow) arrow.classList.add('hidden');
+                }
+            });
+
+            const data = scenarioData[key];
+            if (!data) return;
+            document.getElementById('chatSenderName').innerText = data.sender;
+            document.getElementById('chatSenderTime').innerText = data.time;
+            document.getElementById('chatIncomingMessage').innerText = data.incoming;
+            document.getElementById('chatPractitionerResponse').innerHTML = data.practitionerSteps;
+            const nextReviewEl = document.getElementById('chatNextReview');
+            if (nextReviewEl) nextReviewEl.innerText = data.nextReview;
+        }
+
+        /* ----------------------------------------------------
+           5. Interactive Value Calculator Engine (SGD Basis)
+        ---------------------------------------------------- */
+        function calculateValue() {
+            const moments = parseInt(document.getElementById('inputMoments').value);
+            const visits = parseInt(document.getElementById('inputVisits').value);
+
+            document.getElementById('sliderValueMoments').innerText = `${moments} 次`;
+            document.getElementById('sliderValueVisits').innerText = `${visits} 次`;
+
+            const savedCurrency = (visits * 800) + (moments * 200);
+            const savedHours = Math.round((visits * 4.5) + (moments * 1.5));
+
+            document.getElementById('resultSavings').innerText = `S$ ${savedCurrency.toLocaleString()}+`;
+            document.getElementById('resultHours').innerText = `${savedHours} 小时`;
+        }
+
+        /* ----------------------------------------------------
+           6. FAQ Accordion Handler
+        ---------------------------------------------------- */
+        function toggleFaq(id, event) {
+            if (event && typeof event.preventDefault === 'function') {
+                event.preventDefault();
+            }
+            const answer = document.getElementById(`faqAnswer${id}`);
+            const icon = document.getElementById(`faqIcon${id}`);
+
+            if (answer.classList.contains('hidden')) {
+                answer.classList.remove('hidden');
+                icon.innerText = '−';
+            } else {
+                answer.classList.add('hidden');
+                icon.innerText = '+';
+            }
+        }
+
+        /* ----------------------------------------------------
+           7. Direct WhatsApp & Web Form Modal Integration
+        ---------------------------------------------------- */
+        let currentSubmitType = 'whatsapp';
+
+        function setSubmitType(type) {
+            currentSubmitType = type;
+        }
+
+        function openModal() {
+            document.getElementById('readinessModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('readinessModal').classList.add('hidden');
+            setTimeout(() => {
+                document.getElementById('modalForm').classList.remove('hidden');
+                document.getElementById('modalSuccess').classList.add('hidden');
+            }, 300);
+        }
+
+        function handleModalSubmit(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('modalName').value;
+            const email = document.getElementById('modalEmail').value;
+            const status = document.getElementById('modalStatus').value;
+            const preference = document.getElementById('modalPreference').value;
+
+            if (currentSubmitType === 'whatsapp') {
+                const message = `萃阁会员资格自测与匹配申请：\n\n` +
+                                `• 姓名: ${name}\n` +
+                                `• 邮箱: ${email}\n` +
+                                `• RW调理阶段: ${status}\n` +
+                                `• 意向权益/偏好: ${preference}`;
+
+                const waUrl = `https://wa.me/6596449966?text=${encodeURIComponent(message)}`;
+
+                document.getElementById('directWaBtn').href = waUrl;
+                window.open(waUrl, '_blank');
+
+                document.getElementById('successDescription').innerText = 
+                    `感谢您，${name}。我们已为您生成申请信息并拉起 WhatsApp (+65 96449966)。若未能自动跳转，请点击下方按钮。`;
+            } else {
+                document.getElementById('successDescription').innerText = 
+                    `感谢您，${name}。您的申请已记录成功，我们的顾问团队将会在审核后联系您的邮箱：${email}。`;
+            }
+
+            document.getElementById('modalForm').classList.add('hidden');
+            document.getElementById('modalSuccess').classList.remove('hidden');
+        }
+
+        /* ----------------------------------------------------
+           8. Application Initializer
+        ---------------------------------------------------- */
+        window.onload = function() {
+            selectPhase('01');
+            switchStory(1);
+            loadScenario('A');
+            calculateValue();
+        };
+    </script>
+</body>
+</html>
