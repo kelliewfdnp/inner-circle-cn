@@ -49,6 +49,10 @@
     body { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
     header.fixed { padding-top: env(safe-area-inset-top, 0px); }
     html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+    /* Light mode only: Phase Continuity card turns crimson only while selected (ring-2 is added on click) */
+    html:not(.dark) #phaseCardContinuity.ring-2 { border-color: #80142B !important; --tw-ring-color: rgba(128,20,43,0.2); }
+    /* Anchor divider-led sections flush under the sticky header (80px bar + 1px border) */
+    section#ecosystem.scroll-mt-24, section#simulator.scroll-mt-24, section#value.scroll-mt-24 { scroll-margin-top: calc(81px + env(safe-area-inset-top, 0px)); }
     .hero-title-gradient {
       color: #80142B;
     }
@@ -121,8 +125,8 @@
             
             <!-- Brand Logo / Identity -->
             <a href="#" onclick="scrollToSection('#', event)" class="flex items-center space-x-3 group">
-                <div class="w-10 h-10 rounded-full bg-brand-gold/15 dark:bg-brand-gold/20 border border-brand-gold/40 flex items-center justify-center font-serif text-lg font-bold text-brand-crimson dark:text-brand-gold transition-transform group-hover:scale-105">
-                    萃
+                <div class="w-10 h-10 rounded-full bg-brand-crimson dark:bg-brand-gold/20 border border-brand-crimson dark:border-brand-gold/40 flex items-center justify-center font-serif text-lg font-bold text-white dark:text-brand-gold transition-transform group-hover:scale-105">
+                    <span class="block leading-none" style="transform: translateY(1.5px);">萃</span>
                 </div>
                 <div>
                     <div class="text-[10px] tracking-[0.25em] text-brand-gold font-bold uppercase">Radical Wellness</div>
@@ -183,7 +187,7 @@
     <main class="pt-28">
 
         <!-- SECTION A: HERO SECTION -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 text-center">
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16 sm:pt-10 sm:pb-24 text-center">
             
             <!-- Eyebrow Pill Badge -->
             <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-brand-goldLight dark:bg-neutral-800 border border-[#D8C9AE] dark:border-neutral-700 text-[#5C4825] dark:text-brand-gold text-xs font-semibold tracking-widest uppercase mb-8 shadow-sm">
@@ -342,7 +346,7 @@
 
             <!-- Story Navigation Tabs with Inline Pointer Caret -->
             <div class="flex justify-center space-x-2 sm:space-x-4 mb-8 overflow-x-auto pb-2">
-                <button id="storyTab1" type="button" onclick="switchStory(1, event)" class="relative px-5 py-2.5 rounded-full text-sm font-bold tracking-wider transition-colors duration-150 bg-brand-gold text-brand-goldDarkText shadow">
+                <button id="storyTab1" type="button" onclick="switchStory(1, event)" class="relative px-5 py-2.5 rounded-full text-sm font-bold tracking-wider transition-colors duration-150 border border-brand-gold bg-brand-goldLight dark:bg-brand-gold text-brand-goldDarkText shadow">
                     <span>案例 1: 科技高管倦怠与肠道应激</span>
                     <div class="story-arrow absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-brand-gold z-10"></div>
                 </button>
@@ -385,15 +389,15 @@
                     <div class="grid grid-cols-3 gap-4 pt-6 border-t border-brand-border dark:border-brand-darkBorder text-center">
                         <div>
                             <span class="text-[10px] text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">恢复时间</span>
-                            <span class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">48 小时</span>
+                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">48 小时</span>
                         </div>
                         <div>
                             <span class="text-[10px] text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">节省自费开支</span>
-                            <span class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">S$ 3,500+</span>
+                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">S$ 3,500+</span>
                         </div>
                         <div>
                             <span class="text-[10px] text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">焦虑降低率</span>
-                            <span class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">100%</span>
+                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">100%</span>
                         </div>
                     </div>
                 </div>
@@ -424,15 +428,15 @@
                     <div class="grid grid-cols-3 gap-4 pt-6 border-t border-brand-border dark:border-brand-darkBorder text-center">
                         <div>
                             <span class="text-[10px] text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">睡眠恢复</span>
-                            <span class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">2 天</span>
+                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">2 天</span>
                         </div>
                         <div>
                             <span class="text-[10px] text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">砍掉无用补剂</span>
-                            <span class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">4 种</span>
+                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">4 种</span>
                         </div>
                         <div>
                             <span class="text-[10px] text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">精力值打分</span>
-                            <span class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">9/10 恢复</span>
+                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">9/10 恢复</span>
                         </div>
                     </div>
                 </div>
@@ -463,15 +467,15 @@
                     <div class="grid grid-cols-3 gap-4 pt-6 border-t border-brand-border dark:border-brand-darkBorder text-center">
                         <div>
                             <span class="text-[10px] text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">规避专家挂号</span>
-                            <span class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">2 次</span>
+                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">2 次</span>
                         </div>
                         <div>
                             <span class="text-[10px] text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">诊断开支节省</span>
-                            <span class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">S$ 2,500</span>
+                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">S$ 2,500</span>
                         </div>
                         <div>
                             <span class="text-[10px] text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">心态影响</span>
-                            <span class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">瞬时笃定</span>
+                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">瞬时笃定</span>
                         </div>
                     </div>
                 </div>
@@ -719,11 +723,11 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-brand-border dark:border-brand-darkBorder">
                         <div class="bg-brand-sand dark:bg-neutral-900 p-4 rounded-xl text-center">
                             <span class="text-[10px] text-brand-textMuted dark:text-neutral-400 uppercase font-bold tracking-wider">预估节省自费医疗开支</span>
-                            <div id="resultSavings" class="font-serif text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1">S$ 2,800+</div>
+                            <div id="resultSavings" style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1">S$ 2,800+</div>
                         </div>
                         <div class="bg-brand-sand dark:bg-neutral-900 p-4 rounded-xl text-center">
                             <span class="text-[10px] text-brand-textMuted dark:text-neutral-400 uppercase font-bold tracking-wider">节省候诊与跑院时间</span>
-                            <div id="resultHours" class="font-serif text-2xl font-bold text-brand-textDark dark:text-white mt-1">17 小时</div>
+                            <div id="resultHours" style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-2xl font-bold text-brand-textDark dark:text-white mt-1">17 小时</div>
                         </div>
                     </div>
 
@@ -1062,7 +1066,7 @@
                 const panel = document.getElementById(`storyPanel${i}`);
                 const arrow = tab ? tab.querySelector('.story-arrow') : null;
                 if (i === id) {
-                    if (tab) tab.className = "relative px-5 py-2.5 rounded-full text-sm font-bold tracking-wider transition-colors duration-150 bg-brand-gold text-brand-goldDarkText shadow";
+                    if (tab) tab.className = "relative px-5 py-2.5 rounded-full text-sm font-bold tracking-wider transition-colors duration-150 border border-brand-gold bg-brand-goldLight dark:bg-brand-gold text-brand-goldDarkText shadow";
                     if (panel) panel.classList.add('is-active');
                     if (arrow) arrow.classList.remove('hidden');
                 } else {
@@ -1232,8 +1236,35 @@
                 document.getElementById('successDescription').innerText = 
                     `感谢您，${name}。我们已为您生成申请信息并拉起 WhatsApp (+65 96449966)。若未能自动跳转，请点击下方按钮。`;
             } else {
-                document.getElementById('successDescription').innerText = 
-                    `感谢您，${name}。您的申请已记录成功，我们的顾问团队将会在审核后联系您的邮箱：${email}。`;
+                // Web form: send via FormSubmit (emails the application to the team)
+                const submitBtns = document.querySelectorAll('#modalForm button[type="submit"]');
+                submitBtns.forEach(b => { b.disabled = true; b.style.opacity = '0.6'; });
+                fetch('https://formsubmit.co/ajax/kellwx@gmail.com', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({
+                        _subject: '萃阁会员资格自测新申请 - ' + name,
+                        _template: 'table',
+                        _captcha: 'false',
+                        姓名: name,
+                        邮箱: email,
+                        RW调理阶段: status,
+                        意向权益偏好: preference
+                    })
+                })
+                .then(res => res.json().then(data => ({ ok: res.ok && data.success !== 'false' && data.success !== false })))
+                .then(r => {
+                    if (!r.ok) throw new Error('submit failed');
+                    document.getElementById('successDescription').innerText = 
+                        `感谢您，${name}。您的申请已成功提交，我们的顾问团队将会在审核后联系您的邮箱：${email}。`;
+                    document.getElementById('modalForm').classList.add('hidden');
+                    document.getElementById('modalSuccess').classList.remove('hidden');
+                })
+                .catch(() => {
+                    submitBtns.forEach(b => { b.disabled = false; b.style.opacity = ''; });
+                    alert('提交未成功，请稍后重试，或点击“通过 WhatsApp 提交申请”直接联系我们。');
+                });
+                return;
             }
 
             document.getElementById('modalForm').classList.add('hidden');
