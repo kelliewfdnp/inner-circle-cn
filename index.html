@@ -52,7 +52,7 @@
     /* Light mode only: Phase Continuity card turns crimson only while selected (ring-2 is added on click) */
     html:not(.dark) #phaseCardContinuity.ring-2 { border-color: #80142B !important; --tw-ring-color: rgba(128,20,43,0.2); }
     /* Anchor divider-led sections flush under the sticky header (80px bar + 1px border) */
-    section#ecosystem.scroll-mt-24, section#simulator.scroll-mt-24, section#value.scroll-mt-24 { scroll-margin-top: calc(81px + env(safe-area-inset-top, 0px)); }
+    section#ecosystem.scroll-mt-24, section#simulator.scroll-mt-24, section#vault.scroll-mt-24, section#access.scroll-mt-24, section#value.scroll-mt-24 { scroll-margin-top: calc(81px + env(safe-area-inset-top, 0px)); }
     .hero-title-gradient {
       color: #80142B;
     }
@@ -139,6 +139,7 @@
                 <a href="#ecosystem" onclick="scrollToSection('#ecosystem', event)" class="hover:text-brand-gold transition-colors uppercase">生态架构</a>
                 <a href="#stories" onclick="scrollToSection('#stories', event)" class="hover:text-brand-gold transition-colors uppercase">会员纪实</a>
                 <a href="#simulator" onclick="scrollToSection('#simulator', event)" class="hover:text-brand-gold transition-colors uppercase">临床分诊</a>
+                <a href="#vault" onclick="scrollToSection('#vault', event)" class="hover:text-brand-gold transition-colors uppercase">会员心声</a>
                 <a href="#access" onclick="scrollToSection('#access', event)" class="hover:text-brand-gold transition-colors uppercase">会员席位</a>
                 <a href="#value" onclick="scrollToSection('#value', event)" class="hover:text-brand-gold transition-colors uppercase">价值评估</a>
             </nav>
@@ -170,6 +171,7 @@
             <a href="#ecosystem" onclick="handleMobileNav(event, '#ecosystem')" class="block text-base font-medium text-brand-textDark dark:text-white">生态架构 ECOSYSTEM</a>
             <a href="#stories" onclick="handleMobileNav(event, '#stories')" class="block text-base font-medium text-brand-textDark dark:text-white">会员纪实 STORIES</a>
             <a href="#simulator" onclick="handleMobileNav(event, '#simulator')" class="block text-base font-medium text-brand-textDark dark:text-white">临床分诊 SIMULATOR</a>
+            <a href="#vault" onclick="handleMobileNav(event, '#vault')" class="block text-base font-medium text-brand-textDark dark:text-white">会员心声 VAULT</a>
             <a href="#access" onclick="handleMobileNav(event, '#access')" class="block text-base font-medium text-brand-textDark dark:text-white">会员席位 ACCESS</a>
             <a href="#value" onclick="handleMobileNav(event, '#value')" class="block text-base font-medium text-brand-textDark dark:text-white">价值评估 VALUE</a>
             <div class="pt-4 border-t border-brand-border dark:border-brand-darkBorder flex items-center justify-between">
@@ -490,7 +492,7 @@
             <div class="text-center mb-10">
                 <h2 class="text-xs font-bold tracking-[0.2em] text-brand-gold uppercase">临床实时分诊演练</h2>
                 <p class="font-serif text-3xl sm:text-4xl font-semibold text-brand-textDark dark:text-white mt-2">当身体发出不适信号时</p>
-                <p class="text-xs text-brand-textMuted dark:text-neutral-400 mt-2">点击下方不同场景，体验 Kel 如何进行结构化、理性安抚的临床分诊。</p>
+                <p class="text-sm text-brand-textMuted dark:text-neutral-400 mt-2">点击下方不同场景，体验 Kel 如何进行结构化、理性安抚的临床分诊。</p>
             </div>
 
             <!-- Scenario Selection Buttons with Dynamic Pointer Arrow -->
@@ -574,13 +576,50 @@
 
         </section>
 
+        <!-- SECTION D2: VOICES OF THE VAULT -->
+        <section id="vault" class="scroll-mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-brand-border dark:border-brand-darkBorder">
+
+            <div class="text-center mb-10">
+                <h2 class="text-xs font-bold tracking-[0.2em] text-brand-gold uppercase">社群真实回响</h2>
+                <p class="font-serif text-3xl sm:text-4xl font-semibold text-brand-textDark dark:text-white mt-2">萃阁之声</p>
+                <p class="text-sm text-brand-textMuted dark:text-neutral-400 mt-2">来自长期会员的真实视角：保留式功能医学通道如何改变他们的日常生活。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="bg-brand-cardBg dark:bg-brand-darkCard rounded-3xl border border-brand-border dark:border-brand-darkBorder p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-xs font-bold tracking-widest text-brand-gold">笃定感之声</div>
+                        <p class="text-base sm:text-lg leading-relaxed text-brand-textDark dark:text-neutral-100 mt-4">
+                            “在萃阁之前，每一次突如其来的肠胃发炎或脑雾加重，都意味着一场紧急的网络搜索风暴、三种互不协调的新补剂，以及数天的焦虑。如今有了 Kel 每日两次的信息分诊，我立刻获得理性而稳定的支撑。我清楚地知道几小时内该做什么，而不是陷入数周的内耗。”
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-5 border-t border-brand-border dark:border-brand-darkBorder flex items-center justify-between gap-4">
+                        <span class="text-sm font-bold text-brand-textDark dark:text-white">— 科技公司高管（新加坡）</span>
+                        <span class="text-xs text-brand-textMuted dark:text-neutral-400 whitespace-nowrap">续航 2 年</span>
+                    </div>
+                </div>
+                <div class="bg-brand-cardBg dark:bg-brand-darkCard rounded-3xl border border-brand-border dark:border-brand-darkBorder p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-xs font-bold tracking-widest text-brand-gold">化验与专科筛选之声</div>
+                        <p class="text-base sm:text-lg leading-relaxed text-brand-textDark dark:text-neutral-100 mt-4">
+                            “当常规年度体检报告出现红旗提示，我第一时间转发给 Kel。当天下午的复核时段里，他指出我 24 小时前的高强度训练推高了特定酶指标的读数。这一次分诊回复，帮我避开了 S$1,200 的重复专科会诊与巨大的精神压力。”
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-5 border-t border-brand-border dark:border-brand-darkBorder flex items-center justify-between gap-4">
+                        <span class="text-sm font-bold text-brand-textDark dark:text-white">— 企业创始人 &amp; 家长</span>
+                        <span class="text-xs text-brand-textMuted dark:text-neutral-400 whitespace-nowrap">续航 18 个月</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- SECTION E: PRICING & ACCESS TIERS -->
-        <section id="access" class="scroll-mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <section id="access" class="scroll-mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-brand-border dark:border-brand-darkBorder">
             
             <div class="text-center mb-12">
                 <h2 class="text-xs font-bold tracking-[0.2em] text-brand-gold uppercase">续航保障席位</h2>
                 <p class="font-serif text-3xl sm:text-4xl font-semibold text-brand-textDark dark:text-white mt-2">选择适合您的长期守护方案</p>
-                <p class="text-xs text-brand-textMuted dark:text-neutral-400 mt-2">专为项目结业后设计，严控席位容量以确保高规格医疗护理品质。</p>
+                <p class="text-sm text-brand-textMuted dark:text-neutral-400 mt-2">专为项目结业后设计，严控席位容量以确保高规格医疗护理品质。</p>
             </div>
 
             <!-- 3-Tier Grid -->
@@ -814,6 +853,7 @@
                     <a href="#ecosystem" onclick="scrollToSection('#ecosystem', event)" class="hover:text-brand-gold">生态架构</a>
                     <a href="#stories" onclick="scrollToSection('#stories', event)" class="hover:text-brand-gold">会员纪实</a>
                     <a href="#simulator" onclick="scrollToSection('#simulator', event)" class="hover:text-brand-gold">临床分诊</a>
+                    <a href="#vault" onclick="scrollToSection('#vault', event)" class="hover:text-brand-gold">会员心声</a>
                     <a href="#access" onclick="scrollToSection('#access', event)" class="hover:text-brand-gold">席位选择</a>
                 </div>
             </div>
