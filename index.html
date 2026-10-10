@@ -521,7 +521,7 @@
                         <span id="chatChannelTitle" class="text-xs font-bold tracking-wider text-brand-textDark dark:text-white">萃阁会员私享通道 (Graduated Member Async Channel)</span>
                     </div>
                     <span class="text-[11px] font-medium text-brand-textMuted dark:text-neutral-400 bg-brand-goldLight/50 dark:bg-neutral-800 px-3 py-1 rounded-full border border-[#D8C9AE]/40 dark:border-neutral-700 self-start sm:self-auto">
-                        分诊窗口请参阅“常见问题”部分
+                        分诊时间<a href="#faq" onclick="scrollToSection('#faq', event)" class="cursor-pointer no-underline hover:text-brand-gold active:text-brand-gold focus-visible:text-brand-gold transition-colors">详见 FAQ</a>
                     </span>
                 </div>
 
@@ -639,10 +639,10 @@
                         </div>
 
                         <ul class="mt-6 space-y-3 text-xs text-brand-textDark dark:text-neutral-200">
-                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 异步 WhatsApp 专属沟通通道</li>
-                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 结构化异步信息临床分诊</li>
-                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 实时功能医学指标解读与心理排忧</li>
-                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 访问 Radical Vault 知识宝库</li>
+                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> <span>WhatsApp Lifeline 异步讯息服务<span class="block">（分诊时间<a href="#faq" onclick="event.stopPropagation(); scrollToSection('#faq', event)" class="cursor-pointer no-underline hover:text-brand-gold active:text-brand-gold focus-visible:text-brand-gold transition-colors">详见 FAQ</a>）</span></span></li>
+                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 直接获得功能性健康解读与安心支持</li>
+                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 1 次化验结果功能医学视角再解读</li>
+                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> The Radical Vault 资源库访问权限</li>
                         </ul>
                     </div>
 
@@ -670,7 +670,7 @@
 
                         <ul class="mt-6 space-y-3 text-xs text-brand-textDark dark:text-neutral-200">
                             <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 包含 "启晤" 级别所有权益</li>
-                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 每年 4 次功能医学化验单二次深度解读</li>
+                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 每年 4 次化验单功能医学视角二次解读</li>
                             <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 每年 2 次 30 分钟 1:1 深度分析咨询</li>
                             <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 优先补剂与生活方式动态调整方案</li>
                         </ul>
@@ -696,7 +696,7 @@
 
                         <ul class="mt-6 space-y-3 text-xs text-brand-textDark dark:text-neutral-200">
                             <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 包含 "御藏" 级别所有权益</li>
-                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 每年 6 次功能医学化验单二次深度解读</li>
+                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 每年 6 次化验单功能医学视角二次解读</li>
                             <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 每年 6 次 30 分钟按需战略咨询</li>
                             <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 绿色通道极速响应优先通道</li>
                             <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 直系亲属/家属健康模式交叉联动分析</li>
@@ -771,7 +771,7 @@
                     </div>
 
                     <p class="text-center text-[11px] text-brand-textMuted dark:text-neutral-400 italic mt-6">
-                        “几小时内获得笃定明确的解法，而非在数天的焦虑中内耗。您已重塑健康——萃阁为您保驾护航。”
+                        “几小时内获得笃定明确的解法，而非在数天的焦虑中内耗。您已重塑健康—萃阁为您保驾护航。”
                     </p>
 
                 </div>
@@ -781,7 +781,7 @@
         </section>
 
         <!-- SECTION G: ACCORDION FAQ SECTION -->
-        <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <section id="faq" class="scroll-mt-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             
             <div class="text-center mb-10">
                 <h2 class="text-xs font-bold tracking-[0.2em] text-brand-gold uppercase">清晰透明</h2>
@@ -826,11 +826,13 @@
                 <!-- FAQ Item 4 -->
                 <div class="bg-brand-cardBg dark:bg-brand-darkCard border border-brand-border dark:border-brand-darkBorder rounded-xl overflow-hidden">
                     <button type="button" onclick="toggleFaq(4, event)" class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-semibold text-xs sm:text-sm text-brand-textDark dark:text-white">如果我需要正式的化验单二次解读，该如何安排？</span>
+                        <span class="font-semibold text-xs sm:text-sm text-brand-textDark dark:text-white">如果我需要更多的化验单二次解读，该怎么办？</span>
                         <span id="faqIcon4" class="text-brand-gold font-bold text-lg">+</span>
                     </button>
                     <div id="faqAnswer4" class="hidden px-6 pb-4 text-xs text-brand-textMuted dark:text-neutral-300 leading-relaxed font-sans border-t border-brand-border/50 dark:border-brand-darkBorder/50 pt-3">
-                        Level 02 (御藏限定席位) 每年包含 4 次功能医学化验单深度二次解读及 2 次 1:1 深入咨询；Level 03 (谧境至尊栖愈之域) 则提供 6 次解读及 1:1 按需战略沟通。
+                        <p>你可提交常规血检或功能性检测报告，由 Kel 以功能医学视角重新解读。</p>
+                        <p class="mt-3"><span class="font-semibold text-brand-textDark dark:text-white">Level 02 — 御藏 The Reserve</span><br>每个日历年包含 4 次化验单功能医学视角二次解读，以及 2 次 30 分钟 1:1 深度咨询。</p>
+                        <p class="mt-3"><span class="font-semibold text-brand-textDark dark:text-white">Level 03 — 谧境 The Sanctuary</span><br>每个日历年包含 6 次化验单功能医学视角二次解读，以及 6 次 30 分钟 1:1 战略沟通。</p>
                     </div>
                 </div>
 
