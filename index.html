@@ -51,8 +51,8 @@
     html { scroll-padding-top: env(safe-area-inset-top, 0px); }
     /* Light mode only: Phase Continuity card turns crimson only while selected (ring-2 is added on click) */
     html:not(.dark) #phaseCardContinuity.ring-2 { border-color: #80142B !important; --tw-ring-color: rgba(128,20,43,0.2); }
-    /* Anchor divider-led sections flush under the sticky header (80px bar + 1px border) */
-    section#ecosystem.scroll-mt-24, section#simulator.scroll-mt-24, section#vault.scroll-mt-24, section#access.scroll-mt-24, section#value.scroll-mt-24 { scroll-margin-top: calc(81px + env(safe-area-inset-top, 0px)); }
+    /* Anchor divider-led sections flush under the sticky header (80px bar; the section border overlaps the header border) */
+    section#ecosystem.scroll-mt-24, section#simulator.scroll-mt-24, section#vault.scroll-mt-24, section#access.scroll-mt-24, section#value.scroll-mt-24 { scroll-margin-top: calc(80px + env(safe-area-inset-top, 0px)); }
     .hero-title-gradient {
       color: #80142B;
     }
@@ -142,6 +142,7 @@
                 <a href="#vault" onclick="scrollToSection('#vault', event)" class="hover:text-brand-gold transition-colors uppercase">会员心声</a>
                 <a href="#access" onclick="scrollToSection('#access', event)" class="hover:text-brand-gold transition-colors uppercase">会员席位</a>
                 <a href="#value" onclick="scrollToSection('#value', event)" class="hover:text-brand-gold transition-colors uppercase">价值评估</a>
+                <a href="#faq" onclick="scrollToSection('#faq', event)" class="hover:text-brand-gold transition-colors uppercase">常见问题</a>
             </nav>
 
             <!-- Header Controls: Dark Mode Toggle & CTA -->
@@ -174,6 +175,7 @@
             <a href="#vault" onclick="handleMobileNav(event, '#vault')" class="block text-base font-medium text-brand-textDark dark:text-white">会员心声 VAULT</a>
             <a href="#access" onclick="handleMobileNav(event, '#access')" class="block text-base font-medium text-brand-textDark dark:text-white">会员席位 ACCESS</a>
             <a href="#value" onclick="handleMobileNav(event, '#value')" class="block text-base font-medium text-brand-textDark dark:text-white">价值评估 VALUE</a>
+            <a href="#faq" onclick="handleMobileNav(event, '#faq')" class="block text-base font-medium text-brand-textDark dark:text-white">常见问题 FAQ</a>
             <div class="pt-4 border-t border-brand-border dark:border-brand-darkBorder flex items-center justify-between">
                 <button type="button" onclick="toggleDarkMode()" class="text-xs font-semibold text-brand-textMuted dark:text-neutral-300 flex items-center space-x-2">
                     <span>切换模式 / Toggle Theme</span>
@@ -857,6 +859,7 @@
                     <a href="#simulator" onclick="scrollToSection('#simulator', event)" class="hover:text-brand-gold">临床分诊</a>
                     <a href="#vault" onclick="scrollToSection('#vault', event)" class="hover:text-brand-gold">会员心声</a>
                     <a href="#access" onclick="scrollToSection('#access', event)" class="hover:text-brand-gold">席位选择</a>
+                    <a href="#faq" onclick="scrollToSection('#faq', event)" class="hover:text-brand-gold">常见问题</a>
                 </div>
             </div>
 
