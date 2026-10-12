@@ -57,7 +57,17 @@
     /* Theme toggle icons (mask-based so they take the button's text colour) */
     .theme-icon{display:inline-block;width:1em;height:1em;background-color:currentColor;-webkit-mask:var(--ic) center/contain no-repeat;mask:var(--ic) center/contain no-repeat}
     .icon-moon{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20.354 15.354A9 9 0 0 1 8.646 3.646 9.003 9.003 0 0 0 12 21a9.003 9.003 0 0 0 8.354-5.646z'/%3E%3C/svg%3E")}
-    .icon-sun{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='4.6' fill='black'/%3E%3Cpath d='M12 4.4V1.8M12 19.6v2.6M4.4 12H1.8M19.6 12h2.6M6.63 6.63L4.79 4.79M17.37 17.37l1.84 1.84M6.63 17.37l-1.84 1.84M17.37 6.63l1.84-1.84' stroke='black' stroke-width='2' stroke-linecap='round' fill='none'/%3E%3C/svg%3E")}
+    .icon-sun{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='4.2' fill='none' stroke='black' stroke-width='1.75'/%3E%3Cpath d='M12 4.4V1.8M12 19.6v2.6M4.4 12H1.8M19.6 12h2.6M6.63 6.63L4.79 4.79M17.37 17.37l1.84 1.84M6.63 17.37l-1.84 1.84M17.37 6.63l1.84-1.84' stroke='black' stroke-width='1.75' stroke-linecap='round' fill='none'/%3E%3C/svg%3E")}
+    /* Value calculator sliders: visible track in both modes, gold fill shows the actual level */
+    .value-range{-webkit-appearance:none;appearance:none;display:block;height:8px;border-radius:9999px;outline:none;cursor:pointer;--fill:30%;--track:#E3DFD3;
+      background:linear-gradient(to right,#C5A880 0,#C5A880 var(--fill),var(--track) var(--fill),var(--track) 100%)}
+    .dark .value-range{--track:#4A463F}
+    .value-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;border-radius:9999px;background:#fff;border:2px solid #C5A880;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+    .value-range::-moz-range-thumb{width:18px;height:18px;border-radius:9999px;background:#fff;border:2px solid #C5A880;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+    .value-range::-moz-range-track{background:transparent}
+    /* Hero pill status dot: 8px dot with a ring that pulses outwards every 1.5s */
+    @keyframes pill-ping{0%{transform:scale(1);opacity:.7}75%,100%{transform:scale(1.9);opacity:0}}
+    .pulse-ring{animation:pill-ping 1.5s cubic-bezier(0,0,.2,1) infinite}
     /* Anchor divider-led sections flush under the sticky header (80px bar; the section border overlaps the header border) */
     section#ecosystem.scroll-mt-24, section#simulator.scroll-mt-24, section#vault.scroll-mt-24, section#access.scroll-mt-24, section#value.scroll-mt-24 { scroll-margin-top: calc(80px + env(safe-area-inset-top, 0px)); }
     .hero-title-gradient {
@@ -200,7 +210,7 @@
             
             <!-- Eyebrow Pill Badge -->
             <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-brand-goldLight dark:bg-neutral-800 border border-[#D8C9AE] dark:border-neutral-700 text-[#5C4825] dark:text-brand-gold text-sm font-semibold tracking-widest uppercase mb-8 shadow-sm">
-                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="relative flex w-2 h-2 shrink-0"><span class="pulse-ring absolute inline-flex h-full w-full rounded-full bg-emerald-500"></span><span class="relative inline-flex w-2 h-2 rounded-full bg-emerald-500"></span></span>
                 <span>甄选席位受邀制 • 项目结业健康续航</span>
             </div>
 
@@ -213,7 +223,7 @@
 
             <!-- Subheadline -->
             <p class="mt-6 text-base sm:text-lg text-brand-textMuted dark:text-neutral-300 max-w-2xl mx-auto font-sans leading-relaxed">
-                “萃阁” (The Inner Circle) 是专为 Radical Wellness 结业高管设立的私密会员圈层。提供长期功能医学视角、精准临床数据解读与笃定的内心安宁。
+                “萃阁” (The Inner Circle) 是专为 Radical Wellness 结业高管设立的私密会员圈层。<span class="whitespace-nowrap">提供</span>长期功能医学视角、精准临床数据解读与笃定的内心安宁。
             </p>
 
             <!-- Dual CTA Buttons -->
@@ -359,15 +369,15 @@
             <!-- Story Navigation Tabs with Inline Pointer Caret -->
             <div class="flex justify-center space-x-2 sm:space-x-4 mb-8 overflow-x-auto pb-2">
                 <button id="storyTab1" type="button" onclick="switchStory(1, event)" class="relative px-5 py-2.5 rounded-full text-sm font-bold tracking-wider transition-colors duration-150 border border-brand-gold bg-brand-goldLight dark:bg-brand-gold text-brand-goldDarkText shadow">
-                    <span>案例 1: 科技高管倦怠与肠道应激</span>
+                    <span>案例 1: 高管倦怠</span>
                     <div class="story-arrow absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-brand-gold z-10"></div>
                 </button>
                 <button id="storyTab2" type="button" onclick="switchStory(2, event)" class="relative px-5 py-2.5 rounded-full text-sm font-bold tracking-wider transition-colors duration-150 bg-brand-cardBg dark:bg-brand-darkCard text-brand-textMuted dark:text-neutral-300 border border-brand-border dark:border-brand-darkBorder hover:border-brand-gold">
-                    <span>案例 2: 创始人矿物质猝降与失眠</span>
+                    <span>案例 2: 矿物质猝降与睡眠崩溃</span>
                     <div class="story-arrow hidden absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-brand-gold z-10"></div>
                 </button>
                 <button id="storyTab3" type="button" onclick="switchStory(3, event)" class="relative px-5 py-2.5 rounded-full text-sm font-bold tracking-wider transition-colors duration-150 bg-brand-cardBg dark:bg-brand-darkCard text-brand-textMuted dark:text-neutral-300 border border-brand-border dark:border-brand-darkBorder hover:border-brand-gold">
-                    <span>案例 3: 私募董事年度体检异常警报</span>
+                    <span>案例 3: 体检指标警报</span>
                     <div class="story-arrow hidden absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-brand-gold z-10"></div>
                 </button>
             </div>
@@ -378,38 +388,34 @@
                 <!-- Story Panel 1 -->
                 <div id="storyPanel1" class="story-panel is-active p-6 sm:p-10">
                     <div class="mb-6">
-                        <span class="text-sm font-bold tracking-widest text-brand-gold uppercase">科技公司高级副总裁 (42岁)</span>
-                        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-brand-textDark dark:text-white mt-1">年中高压倦怠与肠道炎性爆发</h3>
-                        <p class="text-sm text-brand-textMuted dark:text-neutral-400 mt-1 font-sans">异步分诊如何阻止长达3周的盲目就医循环</p>
-                    </div>
-
-                    <div class="p-4 rounded-xl bg-brand-sand dark:bg-neutral-800 text-sm text-brand-textDark dark:text-neutral-200 mb-6 leading-relaxed">
-                        <strong>临床背景：</strong> 在完成“衡序”阶段后，重大产品发布期间的高压触发了急性胃肠道发炎与严重脑雾。
+                        <span class="text-sm font-bold tracking-widest text-brand-gold uppercase">私募股权董事总经理 (46岁)</span>
+                        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-brand-textDark dark:text-white mt-1">案例 1：高管倦怠与突发不适</h3>
+                        <p class="text-sm text-brand-textMuted dark:text-neutral-400 mt-2 font-sans">突发餐后疲劳，关键谈判期间出现脑雾，并因常规血检异常标记而陷入严重焦虑。</p>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                         <div class="p-5 rounded-xl bg-red-50/50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/40">
                             <span class="text-sm font-bold text-red-700 dark:text-red-400 uppercase tracking-wider">传统循环 (无萃阁保障)</span>
-                            <p class="text-sm text-brand-textDark dark:text-neutral-300 mt-2 leading-relaxed">恐慌性预约3位专科医生，产生 S$3,500+ 重复检查费用，盲目频繁更换补剂，并遭受数周的精力损伤。</p>
+                            <p class="text-sm text-brand-textDark dark:text-neutral-300 mt-2 leading-relaxed">拜访 3 位专科医生，收到 4 套相互冲突的补剂方案，在碎片化问诊上花费 S$3,500+，却始终没有清晰的根因解释。</p>
                         </div>
                         <div class="p-5 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/40">
                             <span class="text-sm font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">萃阁专属守护路径</span>
-                            <p class="text-sm text-brand-textDark dark:text-neutral-300 mt-2 leading-relaxed">获得分诊回复：确认是皮质醇应激引发的肠道屏障一过性应激。仅需精简增加2种针对性营养素。</p>
+                            <p class="text-sm text-brand-textDark dark:text-neutral-300 mt-2 leading-relaxed">在上午 11 点的分诊窗口把化验结果发给 Kel。识别出因急性过度训练与禁食引起的一过性肝酶升高。通过针对性的电解质调整，3 小时内情绪平复。</p>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-3 gap-4 pt-6 border-t border-brand-border dark:border-brand-darkBorder text-center">
                         <div>
-                            <span class="text-sm text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">恢复时间</span>
-                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">48 小时</span>
+                            <span class="text-sm text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">分诊响应</span>
+                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">&lt; 3 小时</span>
                         </div>
                         <div>
-                            <span class="text-sm text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">节省自费开支</span>
-                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">S$ 3,500+</span>
+                            <span class="text-sm text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">节省不必要问诊</span>
+                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">3 次</span>
                         </div>
                         <div>
-                            <span class="text-sm text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">焦虑降低率</span>
-                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">100%</span>
+                            <span class="text-sm text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">压力缓解</span>
+                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">即刻</span>
                         </div>
                     </div>
                 </div>
@@ -417,38 +423,34 @@
                 <!-- Story Panel 2 -->
                 <div id="storyPanel2" class="story-panel p-6 sm:p-10">
                     <div class="mb-6">
-                        <span class="text-sm font-bold tracking-widest text-brand-gold uppercase">创始人 & 投资人 (38岁)</span>
-                        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-brand-textDark dark:text-white mt-1">无法解释的失眠与矿物质崩溃</h3>
-                        <p class="text-sm text-brand-textMuted dark:text-neutral-400 mt-1 font-sans">在慢性失眠彻底定型前解读矿物质动态</p>
-                    </div>
-
-                    <div class="p-4 rounded-xl bg-brand-sand dark:bg-neutral-800 text-sm text-brand-textDark dark:text-neutral-200 mb-6 leading-relaxed">
-                        <strong>临床背景：</strong> 会员在出差期间进行高强度训练后，突发凌晨 3 点惊醒及心悸现象。
+                        <span class="text-sm font-bold tracking-widest text-brand-gold uppercase">科技创始人兼 CEO (39岁)</span>
+                        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-brand-textDark dark:text-white mt-1">案例 2：矿物质猝降与睡眠崩溃</h3>
+                        <p class="text-sm text-brand-textMuted dark:text-neutral-400 mt-2 font-sans">高强度出差后凌晨 3 点急性失眠、心悸，以及无法解释的晨起疲惫。</p>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                         <div class="p-5 rounded-xl bg-red-50/50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/40">
                             <span class="text-sm font-bold text-red-700 dark:text-red-400 uppercase tracking-wider">传统循环 (无萃阁保障)</span>
-                            <p class="text-sm text-brand-textDark dark:text-neutral-300 mt-2 leading-relaxed">自行盲目购买各种助眠补剂、过量服用褪黑素，导致次日昏昏沉沉，加重疲劳。</p>
+                            <p class="text-sm text-brand-textDark dark:text-neutral-300 mt-2 leading-relaxed">全科医生直接开具助眠药物，未排查镁/钾耗竭，也未评估皮质醇昼夜节律失调。</p>
                         </div>
                         <div class="p-5 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/40">
                             <span class="text-sm font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">萃阁专属守护路径</span>
-                            <p class="text-sm text-brand-textDark dark:text-neutral-300 mt-2 leading-relaxed">异步复核近期 HTMA 组织矿物质分析报告，发现钠/钾出现急剧消耗。Kel 快速调整了电解质剂量与服药时间。</p>
+                            <p class="text-sm text-brand-textDark dark:text-neutral-300 mt-2 leading-relaxed">异步信息分诊识别出航班后钠/钾比例骤降。睡前调整矿物质补充剂量；48 小时内无需药物即恢复深度睡眠。</p>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-3 gap-4 pt-6 border-t border-brand-border dark:border-brand-darkBorder text-center">
                         <div>
-                            <span class="text-sm text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">睡眠恢复</span>
-                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">2 天</span>
+                            <span class="text-sm text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">恢复窗口</span>
+                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">48 小时</span>
                         </div>
                         <div>
-                            <span class="text-sm text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">砍掉无用补剂</span>
-                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">4 种</span>
+                            <span class="text-sm text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">睡眠评分提升</span>
+                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">+34%</span>
                         </div>
                         <div>
-                            <span class="text-sm text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">精力值打分</span>
-                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">9/10 恢复</span>
+                            <span class="text-sm text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">避免用药</span>
+                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">100%</span>
                         </div>
                     </div>
                 </div>
@@ -456,42 +458,37 @@
                 <!-- Story Panel 3 -->
                 <div id="storyPanel3" class="story-panel p-6 sm:p-10">
                     <div class="mb-6">
-                        <span class="text-sm font-bold tracking-widest text-brand-gold uppercase">私募股权董事 (46岁)</span>
-                        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-brand-textDark dark:text-white mt-1">年度体检报告的“红警”指标</h3>
-                        <p class="text-sm text-brand-textMuted dark:text-neutral-400 mt-1 font-sans">避免因误读常规血检报告而陷入虚惊</p>
-                    </div>
-
-                    <div class="p-4 rounded-xl bg-brand-sand dark:bg-neutral-800 text-sm text-brand-textDark dark:text-neutral-200 mb-6 leading-relaxed">
-                        <strong>临床背景：</strong> 高管在年度例行体检中显示转氨酶与肌酐偏高，体检医生发出健康预警。
+                        <span class="text-sm font-bold tracking-widest text-brand-gold uppercase">区域副总裁 (52岁)</span>
+                        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-brand-textDark dark:text-white mt-1">案例 3：例行体检指标警报</h3>
+                        <p class="text-sm text-brand-textMuted dark:text-neutral-400 mt-2 font-sans">年度体检提示炎症指标 (hs-CRP) 与胆固醇偏高，令其担忧潜在心血管疾病而陷入恐慌。</p>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                         <div class="p-5 rounded-xl bg-red-50/50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/40">
                             <span class="text-sm font-bold text-red-700 dark:text-red-400 uppercase tracking-wider">传统循环 (无萃阁保障)</span>
-                            <p class="text-sm text-brand-textDark dark:text-neutral-300 mt-2 leading-relaxed">陷入焦虑，预约昂贵的超声检查，并停掉已坚持一个月的健身计划。</p>
+                            <p class="text-sm text-brand-textDark dark:text-neutral-300 mt-2 leading-relaxed">全科医生未参考近期病毒感染康复情况或高强度训练计划，便立即建议服用他汀类药物。</p>
                         </div>
                         <div class="p-5 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/40">
                             <span class="text-sm font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">萃阁专属守护路径</span>
-                            <p class="text-sm text-brand-textDark dark:text-neutral-300 mt-2 leading-relaxed">Kel 复核了原始数据，指出在抽血前 18 小时进行了高强度力量训练，导致肌酸激酶及转氨酶一过性升高。</p>
+                            <p class="text-sm text-brand-textDark dark:text-neutral-300 mt-2 leading-relaxed">Kel 对照历史基线重新解读完整临床图景，识别出病毒感染后的免疫激活。4 周后复查：各项指标恢复至理想水平。</p>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-3 gap-4 pt-6 border-t border-brand-border dark:border-brand-darkBorder text-center">
                         <div>
-                            <span class="text-sm text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">规避专家挂号</span>
-                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">2 次</span>
+                            <span class="text-sm text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">焦虑持续时间</span>
+                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">&lt; 4 小时</span>
                         </div>
                         <div>
-                            <span class="text-sm text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">诊断开支节省</span>
-                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">S$ 2,500</span>
+                            <span class="text-sm text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">节省专科费用</span>
+                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">S$ 1,200</span>
                         </div>
                         <div>
-                            <span class="text-sm text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">心态影响</span>
-                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">瞬时笃定</span>
+                            <span class="text-sm text-brand-textMuted dark:text-neutral-400 uppercase font-bold block">长期专注力</span>
+                            <span style="font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-weight: 600; font-variant-numeric: lining-nums;" class="font-serif text-lg sm:text-2xl font-bold text-brand-crimson dark:text-brand-gold mt-1 block">持续保持</span>
                         </div>
                     </div>
                 </div>
-
             </div>
 
         </section>
@@ -545,7 +542,7 @@
                             <span id="chatSenderTime" class="text-xs text-brand-textMuted dark:text-neutral-400">10:42 AM SGT</span>
                         </div>
                         <p id="chatIncomingMessage" class="text-sm text-brand-textDark dark:text-neutral-200 leading-relaxed font-sans">
-                            “Kel，我今天早上醒来感觉严重的脑雾，昨晚晚宴后肠道胀痛发炎。我开始有些恐慌，担心之前的所有调理成果都毁于一旦了……”
+                            “Kel，我今天早上醒来感觉严重的脑雾，昨晚晚宴后肠道胀痛发炎。我开始有些恐慌，担心之前的所有调理成果都毁于一旦了…”
                         </p>
                     </div>
 
@@ -707,7 +704,7 @@
                         <ul class="mt-6 space-y-3 text-sm text-brand-textDark dark:text-neutral-200">
                             <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 包含 "御藏" 级别所有权益</li>
                             <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 化验单二次解读升级为每年 6 次</li>
-                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 所有咨询升级为每年 6 次 30 分钟战略沟通</li>
+                            <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> <span style="text-wrap:pretty">所有咨询升级为每年 <span style="white-space:nowrap">6 次 30 分钟</span>私人战略沟通</span></li>
                             <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 优先直达通道</li>
                             <li class="flex items-start"><span class="text-brand-gold font-bold mr-2">✓</span> 直系亲属/家属健康模式交叉联动分析</li>
                         </ul>
@@ -757,7 +754,7 @@
                             <label class="text-sm font-semibold text-brand-textDark dark:text-white">年度健康焦虑时刻 (身体不适/报告疑问)</label>
                             <span id="sliderValueMoments" class="text-sm font-bold text-brand-gold font-serif">6 次</span>
                         </div>
-                        <input type="range" id="inputMoments" min="2" max="20" value="6" oninput="calculateValue()" class="w-full accent-brand-gold bg-brand-sand dark:bg-neutral-800 rounded-lg h-2 cursor-pointer">
+                        <input type="range" id="inputMoments" min="2" max="20" value="6" oninput="calculateValue()" class="value-range w-full">
                     </div>
 
                     <!-- Slider 2: Avoided Emergency Visits -->
@@ -766,7 +763,7 @@
                             <label class="text-sm font-semibold text-brand-textDark dark:text-white">成功规避的恐慌性门诊/急诊/专家号</label>
                             <span id="sliderValueVisits" class="text-sm font-bold text-brand-gold font-serif">2 次</span>
                         </div>
-                        <input type="range" id="inputVisits" min="0" max="8" value="2" oninput="calculateValue()" class="w-full accent-brand-gold bg-brand-sand dark:bg-neutral-800 rounded-lg h-2 cursor-pointer">
+                        <input type="range" id="inputVisits" min="0" max="8" value="2" oninput="calculateValue()" class="value-range w-full">
                     </div>
 
                     <!-- Result Summary Callouts -->
@@ -856,31 +853,25 @@
     </main>
 
     <!-- SECTION H: COMPREHENSIVE FOOTER -->
-    <footer class="bg-brand-sand dark:bg-brand-darkBg border-t border-brand-border dark:border-brand-darkBorder py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer class="bg-white/60 dark:bg-brand-darkBg border-t border-brand-border dark:border-brand-darkBorder py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center pb-8 border-b border-brand-border dark:border-brand-darkBorder">
                 <div class="mb-6 md:mb-0 text-center md:text-left">
-                    <div class="font-serif text-xl font-bold text-brand-crimson dark:text-white">萃阁 <span class="text-xl font-sans font-medium text-brand-gold ml-1">The Inner Circle</span></div>
-                    <p class="text-sm text-brand-textMuted dark:text-neutral-400 mt-1">Radical Wellness 旗下极致高管健康续航私享会</p>
+                    <div class="text-xl font-sans font-medium text-brand-gold tracking-wide"><span class="uppercase tracking-widest">Radical Wellness</span> &amp; The Inner Circle</div>
+                    <p class="text-sm text-brand-textMuted dark:text-neutral-400 mt-1">功能血检与营养基因组学 | FDNP, FBCS | Kel Liew</p>
                 </div>
 
-                <div class="flex space-x-6 text-sm text-brand-textMuted dark:text-neutral-300">
-                    <a href="#ecosystem" onclick="scrollToSection('#ecosystem', event)" class="hover:text-brand-gold">生态架构</a>
-                    <a href="#stories" onclick="scrollToSection('#stories', event)" class="hover:text-brand-gold">会员纪实</a>
-                    <a href="#simulator" onclick="scrollToSection('#simulator', event)" class="hover:text-brand-gold">临床分诊</a>
-                    <a href="#vault" onclick="scrollToSection('#vault', event)" class="hover:text-brand-gold">会员心声</a>
-                    <a href="#access" onclick="scrollToSection('#access', event)" class="hover:text-brand-gold">席位选择</a>
-                    <a href="#faq" onclick="scrollToSection('#faq', event)" class="hover:text-brand-gold">常见问题</a>
+                <div class="flex items-center space-x-6 text-sm">
+                    <a href="https://kelliewfdnp.substack.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-medium text-brand-textDark dark:text-white hover:text-brand-gold transition-colors">
+                        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                        Substack
+                    </a>
+                    <span class="text-brand-textMuted dark:text-neutral-400">仅限受邀</span>
                 </div>
             </div>
 
-            <div class="mt-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-[11px] text-brand-textMuted dark:text-neutral-400 space-y-4 md:space-y-0">
-                <div>
-                    &copy; 2026 Radical Wellness & The Inner Circle. All rights reserved.
-                </div>
-                <div class="max-w-xl text-center md:text-right leading-relaxed">
-                    本网站仅面向受邀会员及结业高管提供功能医学资讯与异步分诊。
-                </div>
+            <div class="mt-8 text-center text-xs text-brand-textMuted dark:text-neutral-400 leading-relaxed">
+                免责声明：萃阁是一项持续性健康伙伴服务，旨在以功能医学视角解读健康模式，并不能替代紧急医疗服务 (A&amp;E)。
             </div>
         </div>
     </footer>
@@ -1142,7 +1133,7 @@
                 sender: 'Marcus Teo (启晤会员)',
                 time: '10:42 AM SGT',
                 nextReview: '下次复核时间: 4:00 PM SGT',
-                incoming: '“Kel，我今天早上醒来感觉严重的脑雾，昨晚晚宴后肠道胀痛发炎。我开始有些恐慌，担心之前的所有调理成果都毁于一旦了……”',
+                incoming: '“Kel，我今天早上醒来感觉严重的脑雾，昨晚晚宴后肠道胀痛发炎。我开始有些恐慌，担心之前的所有调理成果都毁于一旦了…”',
                 practitionerSteps: `
                     <p>Marcus 你好<br>首先请深呼吸。你过去的调理成果并没有毁掉。你现在经历的是暂时的组胺/炎症应激反应，而不是结构性的倒退。</p>
                     <p class="font-bold text-brand-gold mt-2">今日 3 步行动指南：</p>
@@ -1220,6 +1211,11 @@
             const moments = parseInt(document.getElementById('inputMoments').value);
             const visits = parseInt(document.getElementById('inputVisits').value);
 
+            ['inputMoments','inputVisits'].forEach(id => {
+                const el = document.getElementById(id);
+                const pct = (el.value - el.min) / (el.max - el.min) * 100;
+                el.style.setProperty('--fill', `calc(${pct}% + ${(11 - pct * 0.22).toFixed(2)}px)`);
+            });
             document.getElementById('sliderValueMoments').innerText = `${moments} 次`;
             document.getElementById('sliderValueVisits').innerText = `${visits} 次`;
 
@@ -1233,6 +1229,8 @@
         /* ----------------------------------------------------
            6. FAQ Accordion Handler
         ---------------------------------------------------- */
+        document.addEventListener('DOMContentLoaded', calculateValue);
+
         function toggleFaq(id, event) {
             if (event && typeof event.preventDefault === 'function') {
                 event.preventDefault();
