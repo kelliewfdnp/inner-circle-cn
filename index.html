@@ -176,10 +176,15 @@
                 </button>
             </div>
 
-            <!-- Mobile Hamburger Button -->
-            <button type="button" onclick="toggleMobileMenu()" class="lg:hidden p-2 text-brand-textDark dark:text-white" aria-label="打开菜单">
+            <!-- Mobile controls: theme toggle (phones) + hamburger -->
+            <div class="flex items-center gap-2 lg:hidden">
+                <button type="button" onclick="toggleDarkMode()" aria-label="切换主题" class="sm:hidden w-9 h-9 rounded-full bg-white dark:bg-stone-800 border border-stone-200 dark:border-[#B08B48]/70 text-stone-700 dark:text-[#F0DDB0] flex items-center justify-center shrink-0 transition-all">
+                    <i class="theme-icon icon-moon text-lg"></i>
+                </button>
+                <button type="button" onclick="toggleMobileMenu()" class="lg:hidden p-2 text-brand-textDark dark:text-white" aria-label="打开菜单">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
+            </div>
         </div>
 
         <!-- Mobile Drawer Menu -->
@@ -855,7 +860,7 @@
     <!-- SECTION H: COMPREHENSIVE FOOTER -->
     <footer class="bg-white/60 dark:bg-brand-darkBg border-t border-brand-border dark:border-brand-darkBorder py-12">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center pb-8 border-b border-brand-border dark:border-brand-darkBorder">
+            <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0 text-center md:text-left">
                     <div class="text-xl font-sans font-medium text-brand-gold tracking-wide"><span class="uppercase tracking-widest">Radical Wellness</span> &amp; The Inner Circle</div>
                     <p class="text-sm text-brand-textMuted dark:text-neutral-400 mt-1">功能血检与营养基因组学 | FDNP, FBCS | Kel Liew</p>
@@ -967,8 +972,9 @@
         ---------------------------------------------------- */
         function toggleDarkMode() {
             const dark = document.documentElement.classList.toggle('dark');
-            const ic = document.getElementById('theme-icon');
-            if (ic) ic.className = 'theme-icon text-lg ' + (dark ? 'icon-sun' : 'icon-moon');
+            document.querySelectorAll('.theme-icon').forEach(ic => {
+                ic.className = 'theme-icon text-lg ' + (dark ? 'icon-sun' : 'icon-moon');
+            });
         }
 
         function toggleMobileMenu() {
